@@ -1,3 +1,38 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+body {
+    background: whitesmoke;
+    height: 100vh;
+}
+
+.navbar {
+    background-color: #182535;
+    color: aliceblue;
+}
+
+.navs {
+    margin-left: 10px;
+}
+
+.active:hover {
+    background-color: aliceblue;
+    color: black;
+}
+
+.nav.navbar-nav.navbar-right li a {
+    color: aliceblue;
+}
+
+.nav.navbar-nav.navbar-right li a:hover {
+    color: black;
+}
+
+.nav.navbar-nav.navbar-left li a {
+    color: aliceblue;
+}
+
+.nav.navbar-nav.navbar-left li a:hover {
+    color: black;
+}
