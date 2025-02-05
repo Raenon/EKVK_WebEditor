@@ -21,13 +21,14 @@
             <li class="active"><a href="{{route('download')}}">Letöltés</a></li>
           </ul>
           <ul class="nav navbar-nav navbar-right">
-            <li><span> @if(Auth::check())
-                {{Auth::user()->username}}
+            <li><a> @if(Auth::check())
+                {{Auth::user()->username}}</a></li>
+                <li><a href="{{route('logout')}}"><span class="glyphicon glyphicon-user"></span> Kijelentkezés</a></li>
                 @else
-                "Nincs bejelentkezve"
+                <li><a href="{{route('register')}}"><span class="glyphicon glyphicon-user"></span> Regisztáció</a></li>
+                <li><a href="{{route('login')}}"><span class="glyphicon glyphicon-log-in"></span> Bejelentkezés</a></li>
                 @endif</span></li>
-            <li><a href="{{route('register')}}"><span class="glyphicon glyphicon-user"></span> Regisztáció</a></li>
-            <li><a href="{{route('login')}}"><span class="glyphicon glyphicon-log-in"></span> Bejelentkezés</a></li>
+
           </ul>
         </div>
       </nav>
