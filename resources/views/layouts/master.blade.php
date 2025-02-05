@@ -17,10 +17,15 @@
         <div class="container-fluid">
           <ul class="nav navbar-nav navbar-left">
           <li class="active"><a href="{{route('welcome')}}">Home</a></li>
-            <li class="active"><a href="{{route('aboutUs')}}">Rólunk</a></li>
+            <li class="active"><a href="{{route('about')}}">Rólunk</a></li>
             <li class="active"><a href="{{route('download')}}">Letöltés</a></li>
           </ul>
           <ul class="nav navbar-nav navbar-right">
+            <li><span> @if(Auth::check())
+                {{Auth::user()->username}}
+                @else
+                "Nincs bejelentkezve"
+                @endif</span></li>
             <li><a href="{{route('register')}}"><span class="glyphicon glyphicon-user"></span> Regisztáció</a></li>
             <li><a href="{{route('login')}}"><span class="glyphicon glyphicon-log-in"></span> Bejelentkezés</a></li>
           </ul>

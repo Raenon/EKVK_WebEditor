@@ -1,8 +1,9 @@
 <?php
 
+use App\Http\Controllers\AuthController;
 use Illuminate\Support\Facades\Route;
 
-//Ezt majd át kell később
+//TODO:Ezt majd át kell később
 
 Route::get('/', function () {
     return view('welcome');
@@ -21,5 +22,11 @@ Route::get('/download', function () {
 })->name('download');
 
 Route::get('/about', function () {
-    return view('aboutUs');
-})->name('aboutUs');
+    return view('about');
+})->name('about');
+
+Route::post('/register', [AuthController::class, "register"]);
+
+Route::post('/login', [AuthController::class, "login"]);
+
+Route::get('/logout', [AuthController::class, "logout"]);

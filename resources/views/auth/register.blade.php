@@ -14,7 +14,8 @@
       <img src="{{asset('storage/img/1453916.jpg')}}" alt="" />
     </div>
     <!-- Right (Form Content) -->
-    <form class="form-content">
+    <form class="form-content" method="POST">
+    @csrf
       <!-- Form Heading -->
       <div class="form-heading">
         <h1>Fiók Létrehozás</h1>
@@ -23,34 +24,34 @@
       <!-- Input Wrap -->
       <div class="input-wrap">
         <div class="input">
-          <input type="text" id="username" placeholder=" " />
+          <input type="text" id="username" name="username" placeholder=" " />
           <div class="label">
             <label for="username">Felhasználó Név*</label>
           </div>
         </div>
         <div class="input">
-          <input type="email" id="email" placeholder=" " />
+          <input type="email" id="email" name="email" placeholder=" " />
           <div class="label">
             <label for="email">Email*</label>
           </div>
         </div>
         <div class="input">
-          <input type="password" id="password" placeholder=" " />
+          <input type="password" id="password" name="password" placeholder=" " />
           <div class="label">
             <label for="password">Jelszó*</label>
           </div>
         </div>
         <div class="input">
-          <input type="password" id="confirmPassword" placeholder=" " />
+          <input type="password" id="confirmPassword" name="password_confirmation" placeholder=" " />
           <div class="label">
             <label for="confirmPassword">Jelszó Megerősítése*</label>
           </div>
         </div>
         <div class="input">
-          <select name="choose" id="choose" class="p-5">
-            <option value="" disabled selected>--Válaszd ki--</option>
-            <option value="company">Cég</option>
-            <option value="privateuser">Magánszemély</option>
+          <select name="userType" id="choose" class="p-5">
+            <option value="0" disabled selected>--Válaszd ki--</option>
+            <option value="1">Cég</option>
+            <option value="2">Magánszemély</option>
           </select>
         </div>
         <button type="submit">Regisztrálás</button>

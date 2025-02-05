@@ -10,7 +10,8 @@
    <div class="container center">
         <div class="sign-up-form">
           <!-- Right (Form Content) -->
-          <form class="form-content">
+          <form class="form-content" method="POST">
+            @csrf
             <!-- Form Heading -->
             <div class="form-heading">
               <img src="{{asset('storage/img/android-chrome-512x512.png')}}" alt="" />
@@ -19,16 +20,16 @@
             <!-- Input Wrap -->
             <div class="input-wrap">
               <div class="input">
-                <input type="email" id="email" placeholder=" " />
-                <div class="label">
+                <input type="email" id="email" name="email" placeholder="Email" />
+{{--                 <div class="label">
                   <label for="email">Email</label>
-                </div>
+                </div> --}}
               </div>
               <div class="input">
-                <input type="password" id="password" placeholder=" " />
-                <div class="label">
+                <input type="password" id="password" name="password" placeholder="Password" />
+{{--                 <div class="label">
                   <label for="password">Password</label>
-                </div>
+                </div> --}}
               </div>
               <button type="submit">Login</button>
             </div>
