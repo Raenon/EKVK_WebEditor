@@ -6,27 +6,67 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use  App\Models\Users;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Validation\Rules\Password;
 
 class AuthController extends Controller
 {
     public function register(Request $request)
     {
         $request->validate([
-            "Usersname" => [ "required", "string", "max:255" ],
-            "email" => [ "required", "email", "max:255"],
-            "password" => ["required", "string", "min:8", "confirmed" ],
-            "UsersType" => ["required", "numeric", "min:1", "max:2"]
+
+            "username" =>
+            [
+                "required",
+                "string",
+                "max:255"
+            ],
+            "email" =>
+            [
+                "required",
+                "email",
+                "max:255"
+            ],
+            "password" =>
+            [
+                "required",
+                "string",
+                Password::min(8)
+                        ->numbers()
+                        ->mixedCase(),
+                "confirmed"
+            ],
+            "userType" =>
+            [
+                "required",
+                "numeric",
+                "min:1",
+                "max:2"
+            ]
         ],
         [
-            "Usersname.required" => "A felhasználó nevet ki kell tölteni"
-            // TODO: Validation errors
+            "username.required" => "A felhasználó nevet ki kell tölteni",
+            "username.string" => "A felhasználó névnek kell karaktert tartalmaznia",
+            "username.max:255" => "A fehasználó név túl hosszú",
+
+            "email.required" => "Az email cimet ki kell tölteni",
+            "email.email" => "Az email cim formátuma helytelen",
+            "email.max:255" => "A fehasználó név túl hosszú",
+
+            "password.required" => "A jelszót ki kell tölteni",
+            "password.string" => "A jelszónak kell karaktert tartalmaznia",
+            "password.confirmed" => "Nem egyeznek meg a jelszavak",
+
+            "userType.required" => "Válassz ki felhasználó tipust",
+            "userType.numeric" => "Ismeretlen felhasználó tipus",
+            "userType.min" => "Ismeretlen felhasználó tipus",
+            "userType.max" => "Ismeretlen felhasználó tipus",
         ]);
 
         $Users = new Users();
-        $Users-> Usersname = $request->Usersname;
+        $Users-> username = $request->username;
         $Users-> email = $request->email;
         $Users-> password = Hash::make($request->password);
-        $Users-> UsersType = $request->UsersType;
+        $Users-> userType = $request->userType;
         $Users->save();
         return view('welcome')->with("message" , "Sikeres regisztráció");
 
@@ -35,8 +75,19 @@ class AuthController extends Controller
     public function login(Request $request)
     {
         $request->validate([
-            "email" => [ "required", "email", "max:255"],
-            "password" => ["required", "string", "min:8"]
+
+            "email" =>
+            [
+                "required",
+                "email",
+                "max:255"
+            ],
+            "password" =>
+            [
+                "required",
+                "string"
+            ]
+
         ]);
 
         $Users = Users::where('email', $request->email)->first();
@@ -48,7 +99,6 @@ class AuthController extends Controller
         }
 
         if (Hash::check($request->password, $Users->password)){
-            dd(Hash::make($request->password));
             return back()->withErrors('message', 'Nem egyezik az email vagy a jelszó');
         }
 

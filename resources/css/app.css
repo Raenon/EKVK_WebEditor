@@ -2,37 +2,69 @@
 @tailwind components;
 @tailwind utilities;
 
-body {
-    background: whitesmoke;
+ body {
+    background: rgb(235, 229, 229);
     height: 100vh;
 }
 
+
+/* Master layout / navbar */
 .navbar {
     background-color: #182535;
     color: aliceblue;
 }
 
-.navs {
-    margin-left: 10px;
+hr{
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+.active{
+    text-align: center;
+    margin: 5px;
+   padding: 10px;
+   border-radius: 15px;
 }
 
 .active:hover {
-    background-color: aliceblue;
-    color: black;
-}
+    background-color: rgba(240, 248, 255, 0.192);
 
-.nav.navbar-nav.navbar-right li a {
+}
+.offcanvas-header{
+    background-color: #182535;
     color: aliceblue;
 }
 
-.nav.navbar-nav.navbar-right li a:hover {
-    color: black;
-}
-
-.nav.navbar-nav.navbar-left li a {
+.offcanvas-body{
+    background-color: #182535;
     color: aliceblue;
 }
 
-.nav.navbar-nav.navbar-left li a:hover {
-    color: black;
+/* END Master layout  */
+
+
+/* Account page */
+
+.settingsOption{
+    text-align: center;
+    margin: 5px;
+   padding: 10px;
+   border-radius: 15px;
+}
+
+/* END Account page */
+
+
+
+/* Ezek csak nekem teszt körvonalak, ezeket majd kiveszem amint nem lesz szükség rá -K */
+
+.wan{
+    border: red 5px solid;
+
+}
+
+.wanChild{
+    overflow:hidden;
+    border: red 5px solid;
+
 }

@@ -25,6 +25,10 @@ Route::get('/about', function () {
     return view('about');
 })->name('about');
 
+Route::get('/account', function () {
+    return view('account.index');
+})->name('account');
+
 Route::post('/register', [AuthController::class, "register"]);
 
 Route::post('/login', [AuthController::class, "login"]);
