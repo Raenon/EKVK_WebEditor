@@ -19,7 +19,6 @@
                     </div>
                     <div class="col-lg-10 wanChild">lorem ipsum
 
-                    </div>
                 </div>
             </div>
         </div>
