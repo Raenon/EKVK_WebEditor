@@ -48,7 +48,7 @@
           </div>
         </div>
         <div class="input">
-          <select name="userType" id="choose" class="p-5">
+          <select id="choose" class="p-5">
             <option value="0" disabled selected>--Válaszd ki--</option>
             <option value="1">Cég</option>
             <option value="2">Magánszemély</option>

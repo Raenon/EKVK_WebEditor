@@ -35,13 +35,6 @@ class AuthController extends Controller
                         ->mixedCase(),
                 "confirmed"
             ],
-            "userType" =>
-            [
-                "required",
-                "numeric",
-                "min:1",
-                "max:2"
-            ]
         ],
         [
             "username.required" => "A felhasználó nevet ki kell tölteni",
@@ -55,18 +48,13 @@ class AuthController extends Controller
             "password.required" => "A jelszót ki kell tölteni",
             "password.string" => "A jelszónak kell karaktert tartalmaznia",
             "password.confirmed" => "Nem egyeznek meg a jelszavak",
-
-            "userType.required" => "Válassz ki felhasználó tipust",
-            "userType.numeric" => "Ismeretlen felhasználó tipus",
-            "userType.min" => "Ismeretlen felhasználó tipus",
-            "userType.max" => "Ismeretlen felhasználó tipus",
         ]);
 
         $Users = new Users();
         $Users-> username = $request->username;
         $Users-> email = $request->email;
         $Users-> password = Hash::make($request->password);
-        $Users-> userType = $request->userType;
+        $Users-> role = 2;
         $Users->save();
         return view('welcome')->with("message" , "Sikeres regisztráció");
 
