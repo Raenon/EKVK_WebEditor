@@ -21,6 +21,10 @@ Route::get('/download', function () {
     return view('download.index');
 })->name('download');
 
+Route::get('/forgotpsw', function () {
+    return view('auth.forgotpsw');
+})->name('forgotpsw');
+
 Route::get('/about', function () {
     return view('about');
 })->name('about');

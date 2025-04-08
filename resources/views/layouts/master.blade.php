@@ -11,8 +11,9 @@
         integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
         crossorigin="anonymous"></script>
 
-        {{-- icons --}}
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    {{-- icons --}}
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 
     @vite(["resources/css/app.css", "resources/js/app.js"])
     @yield('vite')
@@ -36,31 +37,38 @@
                     <h5 class="offcanvas-title " id="offcanvasNavbarLabel">
                         EKVK Menu
                     </h5>
-                    <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas"
+                    <button id="btn-app" type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas"
                         aria-label="Close"></button>
                 </div>
                 <div class="offcanvas-body">
                     <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
                         <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="{{route('welcome')}}"><i class="bi bi-house-fill"></i> Home</a>
+                            <a class="nav-link active" aria-current="page" href="{{route('welcome')}}"><i
+                                    class="bi bi-house-fill"></i> Home</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="{{route('about')}}"><i class="bi bi-people-fill"></i> Rólunk</a>
+                            <a class="nav-link active" aria-current="page" href="{{route('about')}}"><i
+                                    class="bi bi-people-fill"></i> Rólunk</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="{{route('download')}}"><i class="bi bi-arrow-down-circle"></i> Letöltés</a>
+                            <a class="nav-link active" aria-current="page" href="{{route('download')}}"><i
+                                    class="bi bi-arrow-down-circle"></i> Letöltés</a>
                         </li>
 
                     </ul>
                     <hr>
                     <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
                         @if(Auth::check())
-                        <li><a class="nav-link active" href="{{route('account')}}"><i class="bi bi-person-fill"></i> {{Auth::user()->username}}</a></li>
-                        <li><a class="nav-link active" href="{{route('logout')}}"><i class="bi bi-door-closed"></i> Kijelentkezés</a></li>
+                            <li><a class="nav-link active" href="{{route('account')}}"><i class="bi bi-person-fill"></i>
+                                    {{Auth::user()->username}}</a></li>
+                            <li><a class="nav-link active" href="{{route('logout')}}"><i class="bi bi-door-closed"></i>
+                                    Kijelentkezés</a></li>
                         @else
 
-                        <li><a class="nav-link active" href="{{route('login')}}"><i class="bi bi-person"></i> Bejelentkezés </a></li>
-                        <li><a class="nav-link active" href="{{route('register')}}"><i class="bi bi-person-add"></i> Regisztáció</a></li>
+                            <li><a class="nav-link active" href="{{route('login')}}"><i class="bi bi-person"></i>
+                                    Bejelentkezés </a></li>
+                            <li><a class="nav-link active" href="{{route('register')}}"><i class="bi bi-person-add"></i>
+                                    Regisztáció</a></li>
                         @endif</span></li>
 
                     </ul>
@@ -72,7 +80,14 @@
     <main>
         @yield('content')
     </main>
-
+   {{--  <footer>
+        <div class="containerthird">
+        <p>&copy; 2025 Könyvelő Iroda. Minden jog fenntartva.</p>
+        </div>
+      </footer> --}}
+      <footer class="p-6 mt-12">
+        <p>&copy; 2025 Könyvelői Iroda. Minden jog fenntartva.</p>
+    </footer>
 </body>
 
 </html>

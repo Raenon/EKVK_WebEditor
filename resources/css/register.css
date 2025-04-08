@@ -9,10 +9,10 @@
 }
 
 /* Ezt én irtam át, hogy középre tegye  */
-.center{
-    display: flex;
-    justify-content: center;
-    align-items: center;
+.center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 
@@ -20,7 +20,7 @@ body {
   height: 100vh;
   display: grid;
   place-items: center;
-  background-color:#182535;
+  background-color: #182535;
   font-weight: 300;
   padding: 0 24px;
 }
@@ -72,27 +72,37 @@ p {
   width: 100%;
 }
 
+#choose-link {
+  border: 1px solid grey;
+}
+
+
 .input {
   display: flex;
   flex-direction: column;
   position: relative;
 }
 
-input {
+
+input,
+select {
   display: inline-block;
-  /* width: 100%; */
+  width: 100%;
   padding: 8px 0;
   border: none;
   border-bottom: 1px solid #181824;
   transition: 300ms;
   font-size: 14px;
   font-weight: 300;
+  background-color: transparent;
+  color: #000;
 }
 
-input:focus {
+input:focus,
+select:focus {
   outline: none;
-  box-shadow: 0 1px 0 0 #6236ff;
   border-color: #6236ff;
+  box-shadow: 0 1px 0 0 #6236ff;
 }
 
 .label {
@@ -109,7 +119,24 @@ label {
   color: #b0b0b0;
 }
 
+.label-text{}
+
 /* Label Effect */
+input:focus+.label,
+input:not(:placeholder-shown)+.label,
+select:focus+.label,
+select:not([value="0"])+.label {
+  transform: translateY(-27px);
+}
+
+input:focus+.label label,
+input:not(:placeholder-shown)+.label label,
+select:focus+.label label,
+select:not([value="0"])+.label label {
+  font-weight: 500;
+  color: initial;
+}
+
 input:focus + .label,
 input:not(:placeholder-shown) + .label {
   transform: translateY(-27px);

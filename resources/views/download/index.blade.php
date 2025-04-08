@@ -1,5 +1,12 @@
 @extends('layouts.master')
 
 @section('content')
-      <h1>LETÖLÉS ÁTBESZÉLÉS ALATT</h1>
+      <div class="container">
+              <div class="box">
+                  
+                        <img src="{{ asset('storage/img/logo.png') }}" alt="sample logo">
+                        <button class="btn-download" type="submit">Download</button>
+
+              </div>
+      </div>
 @endsection

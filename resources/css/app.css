@@ -2,42 +2,45 @@
 @tailwind components;
 @tailwind utilities;
 
- body {
-    background: rgb(235, 229, 229);
-    height: 100vh;
+body {
+  background-color: #e2e7ec;
 }
-
 
 /* Master layout / navbar */
 .navbar {
-    background-color: #182535;
-    color: aliceblue;
+  background-color: #182535;
+  color: aliceblue;
 }
 
-hr{
-    margin-top: 5px;
-    margin-bottom: 5px;
+#btn-app {
+  width: 20px;
 }
 
-.active{
-    text-align: center;
-    margin: 5px;
-   padding: 10px;
-   border-radius: 15px;
+hr {
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
+.active {
+  text-align: center;
+  margin: 5px;
+  padding: 10px;
+  border-radius: 15px;
 }
 
 .active:hover {
-    background-color: rgba(240, 248, 255, 0.192);
+  background-color: rgba(240, 248, 255, 0.192);
 
 }
-.offcanvas-header{
-    background-color: #182535;
-    color: aliceblue;
+
+.offcanvas-header {
+  background-color: #182535;
+  color: aliceblue;
 }
 
-.offcanvas-body{
-    background-color: #182535;
-    color: aliceblue;
+.offcanvas-body {
+  background-color: #182535;
+  color: aliceblue;
 }
 
 /* END Master layout  */
@@ -45,11 +48,11 @@ hr{
 
 /* Account page */
 
-.settingsOption{
-    text-align: center;
-    margin: 5px;
-   padding: 10px;
-   border-radius: 15px;
+.settingsOption {
+  text-align: center;
+  margin: 5px;
+  padding: 10px;
+  border-radius: 15px;
 }
 
 /* END Account page */
@@ -58,13 +61,322 @@ hr{
 
 /* Ezek csak nekem teszt körvonalak, ezeket majd kiveszem amint nem lesz szükség rá -K */
 
-.wan{
-    border: red 5px solid;
+.wan {
+  border: red 5px solid;
 
 }
 
-.wanChild{
-    overflow:hidden;
-    border: red 5px solid;
+.wanChild {
+  overflow: hidden;
+  border: red 5px solid;
 
+}
+
+
+/*about.blade.php  */
+.wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-top: 5%;
+}
+
+.user-card {
+  margin-bottom: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: #fff;
+  border-radius: 10px;
+  padding: 40px;
+  width: 850px;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 2px 20px -5px rgba(0, 0, 0, 0.5);
+}
+
+.user-card:before {
+  content: '';
+  position: absolute;
+  height: 300%;
+  width: 173px;
+  background: #182535;
+  top: -60px;
+  left: -125px;
+  z-index: 0;
+  transform: rotate(17deg);
+}
+
+.user-card-img {
+  position: absolute;
+  top: 14px;
+  left: 20px;
+  margin-right: auto;
+  margin-left: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 2;
+}
+
+.user-card-img img {
+  width: 180px;
+  height: 180px;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 3px solid whitesmoke;
+
+}
+
+.user-card-info {
+  text-align: center;
+}
+
+.user-card-info h2 {
+  font-size: 24px;
+  margin: 0;
+  margin-bottom: 10px;
+  font-family: 'Bebas Neue', sans-serif;
+  letter-spacing: 3px;
+}
+
+.user-card-info p {
+  font-size: 14px;
+  margin-bottom: 2px;
+}
+
+.user-card-info p span {
+  font-weight: 700;
+  margin-right: 10px;
+}
+
+@media only screen and (min-width: 768px) {
+  .user-card {
+    flex-direction: row;
+    align-items: flex-start;
+  }
+
+  .user-card-img {
+    margin-right: 30px;
+    margin-bottom: 0;
+  }
+
+  .user-card-info {
+    text-align: left;
+  }
+}
+
+@media (max-width: 767px) {
+  .wrapper {
+    padding-top: 3%;
+  }
+
+  .user-card:before {
+    width: 300%;
+    height: 200px;
+    transform: rotate(0);
+  }
+
+  .user-card-info h2 {
+    margin-top: 25px;
+    font-size: 35px;
+  }
+
+  .user-card-info p span {
+    display: block;
+    margin-bottom: 15px;
+    font-size: 18px;
+  }
+}
+
+/*about.blade.php VÉGE */
+
+
+/* Download */
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  width: 100%;
+  height: 100vh;
+  padding-top: 10vh;
+}
+
+.box {
+  background-color: #182535;
+  margin-top: 150px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 300px;
+  width: 380px;
+  border-radius: 25px;
+  box-shadow: rgba(184, 183, 183, 0.2) 0px 2px 18px 0px;
+  padding: 20px;
+}
+
+.box img {
+  margin-top: 15px;
+  width: 120px;
+  height: 120px;
+  border-radius: 20%;
+  object-fit: cover;
+  margin-bottom: 20px;
+  border: 1px solid white;
+}
+
+
+@media screen and (max-width:630px) {
+  .box {
+    width: 95%;
+  }
+}
+
+.btn-download {
+  width: 280px;
+  padding: 15px;
+  border-radius: 30px;
+  border: none;
+  background-color: #F8FFF8;
+  font-size: 20px;
+  margin-top: auto;
+  align-self: center;
+  margin-bottom: 8px;
+}
+
+.btn-download:hover {
+  cursor: pointer;
+}
+
+/* Download Vége */
+
+/* Welcome Eleje*/
+
+/* Alap szekciók */
+/* Videós háttér szekció */
+.video-background {
+  position: relative;
+  width: 100%;
+  height: 50vh;
+  /* A teljes magasságot kitölti */
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#bg-video {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  /* A videó kitölti a teljes teret, megőrzi az arányokat */
+  transform: translate(-50%, -50%);
+  /* A videó középre igazítása */
+  z-index: -1;
+  /* A videót a tartalom alá helyezi */
+}
+
+/* További tartalom */
+.content {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  color: white;
+  z-index: 1;
+  /* A szöveg a videó előtt legyen */
+}
+
+.content h2 {
+  font-size: 3rem;
+  margin-bottom: 10px;
+}
+
+.content p {
+  font-size: 1.5rem;
+  margin-bottom: 20px;
+}
+
+.btn {
+  background-color: #182535;
+  color: #f5f7fa;
+  padding: 12px 24px;
+  text-decoration: none;
+  border-radius: 5px;
+}
+
+.btn:hover {
+  background-color: #f5f7fa;
+  color: #182535;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.6);
+}
+
+/* Szolgáltatások szekció */
+.services {
+  padding: 50px 0;
+  background-color: #e2e7ec;
+  height: auto;
+}
+
+.services h3 {
+  text-align: center;
+  font-size: 28px;
+  margin-bottom: 40px;
+}
+
+.service-list {
+  display: flex;
+  gap: 30px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.service {
+  width: 350px;
+  background-color: #f5f7fa;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+}
+
+.service h4 {
+  margin-top: 0;
+}
+
+/* Lábléc */
+footer {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  background-color: #182535;
+  color: #e2e7ec;
+  text-align: center;
+}
+
+
+/* Reszponzív design */
+@media (max-width: 768px) {
+  .col {
+    flex: 1 1 100%;
+    max-width: 100%;
+  }
+
+  section {
+    height: auto;
+  }
+
+  .content h2 {
+    font-size: 2rem;
+  }
+
+  .content p {
+    font-size: 1.2rem;
+  }
 }
