@@ -29,6 +29,18 @@ Route::get('/account', function () {
     return view('account.index');
 })->name('account');
 
+Route::get('/admin', function () {
+    return view('admin.index');
+})->name('admin');
+
+Route::get('/company', function () {
+    return view('company.index');
+})->name('company');
+
+Route::get('/user', function () {
+    return view('user.index');
+})->name('user');
+
 Route::post('/register', [AuthController::class, "register"]);
 
 Route::post('/login', [AuthController::class, "login"]);
