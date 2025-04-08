@@ -46,19 +46,8 @@
         <div class="label">
         <label for="confirmPassword">Jelszó Megerősítése*</label>
         </div>
-<<<<<<< HEAD
-        <div class="input">
-          <select id="choose" class="p-5">
-            <option value="0" disabled selected>--Válaszd ki--</option>
-            <option value="1">Cég</option>
-            <option value="2">Magánszemély</option>
-          </select>
-        </div>
-        <button type="submit">Regisztrálás</button>
-=======
-      </div>
-      <button type="submit">Regisztrálás</button>
->>>>>>> Panka
+
+        <button class="mt-5" type="submit">Regisztrálás</button>
       </div>
     </form>
     </div>
