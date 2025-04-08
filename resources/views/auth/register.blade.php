@@ -47,54 +47,9 @@
         <label for="confirmPassword">Jelszó Megerősítése*</label>
         </div>
       </div>
-      <div class="input">
-        <select name="userType" id="choose" class="select-input" placeholder=" ">
-        <option value="0" disabled selected>--Válaszd ki--</option>
-        <option value="1">Cég</option>
-        <option value="2">Magánszemély</option>
-        </select>
-        <div class="label">
-        <label for="choose">Felhasználó Típus*</label>
-        </div>
-      </div>
-
-      <!-- Company fields (initially hidden) -->
-      <!-- Company Name -->
-      <div class="input" id="company-details" style="display: none;">
-        <input type="text" name="company_name" id="companyName" placeholder=" " />
-        <div class="label-text">
-        <label for="companyName">Cég Neve*</label>
-        </div>
-      </div>
-
-      <!-- Tax Number -->
-      <div class="input" id="company-tax" style="display: none;">
-        <input type="text" name="tax_number" id="taxNumber" placeholder=" " />
-        <div class="label-text">
-        <label for="taxNumber">Adószám*</label>
-        </div>
-      </div>
-
       <button type="submit">Regisztrálás</button>
       </div>
     </form>
     </div>
   </div>
-  <script>
-    document.addEventListener("DOMContentLoaded", function () {
-    const choose = document.getElementById("choose");
-    const companyDetails = document.getElementById("company-details");
-    const companyTax = document.getElementById("company-tax");
-
-    choose.addEventListener("change", function () {
-      if (choose.value === "1") {
-      companyDetails.style.display = "block";
-      companyTax.style.display = "block";
-      } else {
-      companyDetails.style.display = "none";
-      companyTax.style.display = "none";
-      }
-    });
-    });
-  </script>
 @endsection

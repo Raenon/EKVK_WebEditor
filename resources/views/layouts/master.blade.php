@@ -80,7 +80,14 @@
     <main>
         @yield('content')
     </main>
-
+   {{--  <footer>
+        <div class="containerthird">
+        <p>&copy; 2025 Könyvelő Iroda. Minden jog fenntartva.</p>
+        </div>
+      </footer> --}}
+      <footer class="p-6 mt-12">
+        <p>&copy; 2025 Könyvelői Iroda. Minden jog fenntartva.</p>
+    </footer>
 </body>
 
 </html>

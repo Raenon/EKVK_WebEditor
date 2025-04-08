@@ -10,7 +10,7 @@
   <div class="container center">
     <div class="sign-up-form">
     <button class="btn-back">
-      < </button>
+      <a href="{{ route('welcome') }}"><</a></button>
       <!-- Right (Form Content) -->
       <form class="form-content" method="POST">
         @csrf
@@ -32,8 +32,9 @@
           <label for="password">Password</label>
           </div> --}}
         </div>
-
+        <p class="fhuj">Nincs még fiókod? <a class="podi" href="/register">Regisztáció</a>!</p>
         <p>Elfelejtettem a <a class="podi" href="/forgotpsw">jelszavamat</a>!</p>
+
         <button class="submit" type="submit">Login</button>
         </div>
       </form>

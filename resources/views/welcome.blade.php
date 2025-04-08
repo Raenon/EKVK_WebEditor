@@ -10,7 +10,7 @@
     <div class="content">
     <h2>Professzionális könyvelés</h2>
     <p>Bízza ránk a számokat, hogy Ön a növekedésre koncentrálhasson.</p>
-    <a href="#kapcsolat" class="btn">Lépjen kapcsolatba velünk</a>
+    <a href="/about" class="btn">Lépjen kapcsolatba velünk</a>
     </div>
   </section>
 
@@ -35,10 +35,4 @@
     </div>
   </section>
 
-  <!-- Lábléc -->
-  <footer>
-    <div class="containerthird">
-    <p>&copy; 2025 Könyvelő Iroda. Minden jog fenntartva.</p>
-    </div>
-  </footer>
 @endsection
