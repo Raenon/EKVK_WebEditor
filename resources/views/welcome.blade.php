@@ -1,39 +1,44 @@
 @extends('layouts.master')
 
 @section('content')
-  <section class="about-section">
-    <div class="about-container">
-    <!-- Bal oldal: Szöveges tartalom -->
-    <div class="about-text">
-      <h2><br><span>EKVK Accounting</span></h2>
-      <p class="first">
-      Az <b>Ekvk Accounting</b> egy innovatív könyvelői platform, amely megkönnyíti a mindennapi munkát könyvelőknek
-      és vállalkozásoknak egyaránt.
-      Tudjuk, hogy a mai világban az idő és a hatékonyság kulcsfontosságú, ezért hoztuk létre ezt a rendszert, ahol a
-      dokumentumokhoz való hozzáférés nem korlátozódik többé egyetlen irodára vagy számítógépre.
-      </p>
+  <!-- Videós háttér szekció -->
+  <section class="video-background">
+    <video autoplay muted loop id="bg-video">
+    <source src="{{ asset('./storage/img/video4.mp4') }}" type="video/mp4">
+    Your browser does not support the video tag.
+    </video>
+    <div class="content">
+    <h2>Professzionális könyvelés</h2>
+    <p>Bízza ránk a számokat, hogy Ön a növekedésre koncentrálhasson.</p>
+    <a href="#kapcsolat" class="btn">Lépjen kapcsolatba velünk</a>
     </div>
+  </section>
 
-    <!-- Jobb oldal: Kép -->
-    <div class="about-image">
-      <img src="{{asset('storage/img/1453916.jpg')}}" alt="Image">
-    </div>
-
-    <!-- Alsó szöveg -->
-    <div class="about-description">
-      <p class="second">
-      Platformunk lehetővé teszi, hogy a cégek egyszerűen, néhány kattintással feltölthessék a számláikat,
-      bizonylataikat, dokumentumaikat a könyvelők pedig valós időben hozzáférjenek ezekhez, akárhol is vannak éppen.
-      Nincs többé elveszett számla, félreértett e-mail, vagy hosszadalmas papírmunka.
-      <br>
-      Felületünk könnyen kezelhető, biztonságos és átlátható, ahogy a könyvelésnek lennie kell.
-      Legyen szó kisvállalkozásról vagy nagyobb cégről, rendszerünk skálázható megoldást kínál, amely alkalmazkodik a
-      mindennapi működéshez.
-      <br>
-      Kapcsoljuk össze a könyvelőket és az ügyfeleket egyetlen, jól működő digitális térben.
-      Tölts fel. Könyvelj. Készen vagy.
-      </p>
+  <!-- Szolgáltatások szekció -->
+  <section class="services">
+    <div class="containersecond">
+    <h3>Szolgáltatásaink</h3>
+    <div class="service-list">
+      <div class="service">
+      <h4><strong>Könyvelés</strong></h4>
+      <p>Teljes körű könyvelési szolgáltatás cégeknek és egyéni vállalkozóknak.</p>
+      </div>
+      <div class="service">
+      <h4><strong>Bérszámfejtés</strong></h4>
+      <p>Precíz és megbízható bérszámfejtési szolgáltatások.</p>
+      </div>
+      <div class="service">
+      <h4><strong>Tanácsadás</strong></h4>
+      <p>Adózási és pénzügyi tanácsadás egy helyen.</p>
+      </div>
     </div>
     </div>
   </section>
+
+  <!-- Lábléc -->
+  <footer>
+    <div class="containerthird">
+    <p>&copy; 2025 Könyvelő Iroda. Minden jog fenntartva.</p>
+    </div>
+  </footer>
 @endsection

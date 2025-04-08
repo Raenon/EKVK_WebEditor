@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 body {
-    background-color:#131d2a;
+    background-color: #eceef0;
     height: 100vh;
 }
 
@@ -251,79 +251,130 @@ hr {
 .btn-download:hover {
     cursor: pointer;
 }
+
 /* Download Vége */
 
 /* Welcome Eleje*/
-/* About szekció */
-.about-section {
-    background-color: #131d2a;
-    padding: 40px;
-    display: flex;
-    justify-content: center;
-}
 
-.about-container {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    max-width: 1000px;
+/* Alap szekciók */
+/* Videós háttér szekció */
+.video-background {
+    position: relative;
     width: 100%;
-    gap: 20px;
-    color: white;
-}
-
-/* Bal oldal: Szöveg */
-.about-text {
+    height: 50vh; /* A teljes magasságot kitölti */
+    overflow: hidden;
     display: flex;
-    flex-direction: column;
     justify-content: center;
-}
-
-.about-text h2 {
-    font-size: 42px;
-    font-family: 'Playfair Display', serif;
-    margin: 0;
-}
-
-.about-text span {
-    font-weight: bold;
-}
-
-.lines {
-    width: 40px;
-    height: 20px;
-    border-left: 2px solid white;
-    border-right: 2px solid white;
+    align-items: center;
+  }
+  
+  #bg-video {
     position: absolute;
-    top: 12px;
-    left: 5px;
-}
-
-/* Jobb oldal: Kép */
-.about-image img {
+    top: 50%;
+    left: 50%;
     width: 100%;
+    height: 100%;
+    object-fit: cover; /* A videó kitölti a teljes teret, megőrzi az arányokat */
+    transform: translate(-50%, -50%); /* A videó középre igazítása */
+    z-index: -1; /* A videót a tartalom alá helyezi */
+  }
+  
+  /* További tartalom */
+  .content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    color: white;
+    z-index: 1; /* A szöveg a videó előtt legyen */
+  }
+  
+  .content h2 {
+    font-size: 3rem;
+    margin-bottom: 10px;
+  }
+  
+  .content p {
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+  }
+  
+  .btn {
+    background-color: #182535;
+    color: #f5f7fa;
+    padding: 12px 24px;
+    text-decoration: none;
     border-radius: 5px;
-}
-
-/* Alsó szöveg */
-.about-description {
-    grid-column: span 2;
-    text-align: left;
-    
-}
-.second{
-    font-size: 16px;
-}
-
-/* Reszponzív dizájn */
-@media (max-width: 768px) {
-    .about-container {
-        grid-template-columns: 1fr;
-        text-align: center;
+  }
+  
+  .btn:hover {
+    background-color: #f5f7fa;
+    color: #182535;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.6);
+  }
+  
+  /* Szolgáltatások szekció */
+  .services {
+    padding: 50px 0;
+    background-color: #e2e7ec;
+    height: auto;
+  }
+  
+  .services h3 {
+    text-align: center;
+    font-size: 28px;
+    margin-bottom: 40px;
+  }
+  
+  .service-list {
+    display: flex;
+    gap: 30px;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  
+  .service {
+    width: 350px;
+    background-color: #f5f7fa;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+  }
+  
+  .service h4 {
+    margin-top: 0;
+  }
+  
+  /* Lábléc */
+  footer {
+    background-color: #182535;
+    color: #e2e7ec;
+    text-align: center;
+  }
+  
+  .containerthird {
+    height: 100px;
+    padding-top: 40px;
+  }
+  
+  /* Reszponzív design */
+  @media (max-width: 768px) {
+    .col {
+      flex: 1 1 100%;
+      max-width: 100%;
     }
-
-    .about-description {
-        text-align: center;
+  
+    section {
+      height: auto;
     }
-}
-
-/* Welcome Vége */
+  
+    .content h2 {
+      font-size: 2rem;
+    }
+  
+    .content p {
+      font-size: 1.2rem;
+    }
+  }
+  

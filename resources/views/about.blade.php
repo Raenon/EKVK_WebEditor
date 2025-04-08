@@ -40,7 +40,7 @@
         <p><span>Email:</span> konorotkirapanka@elg-bp.edu.hu</p>
         <p><span>Location:</span> Budapest, Hungary</p>
         <p><span>Occupation:</span> Web Developer</p>
-        <p><span>About me:</span> 21 years old<p>
+        <p><span>About me:</span> 20 years old<p>
       </div>
   </div>
 </div>
