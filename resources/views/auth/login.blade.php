@@ -16,7 +16,8 @@
         @csrf
         <!-- Form Heading -->
         <div class="form-heading">
-        <h1>Login</h1>
+        <img src="{{asset('storage/img/logo.png')}}" alt="">
+        <h1>Bejelentkezés</h1>
         </div>
         <!-- Input Wrap -->
         <div class="input-wrap">
@@ -27,7 +28,7 @@
           </div> --}}
         </div>
         <div class="input">
-          <input type="password" id="password" name="password" placeholder="Password" />
+          <input type="password" id="password" name="password" placeholder="Jelszó" />
           {{-- <div class="label">
           <label for="password">Password</label>
           </div> --}}
@@ -35,7 +36,7 @@
         <p class="fhuj">Nincs még fiókod? <a class="podi" href="/register">Regisztáció</a>!</p>
         <p>Elfelejtettem a <a class="podi" href="/forgotpsw">jelszavamat</a>!</p>
 
-        <button class="submit" type="submit">Login</button>
+        <button class="submit" type="submit">Bejelentkezés</button>
         </div>
       </form>
     </div>

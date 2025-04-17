@@ -15,7 +15,6 @@
   align-items: center;
 }
 
-
 body {
   height: 100vh;
   display: grid;
@@ -36,7 +35,8 @@ body {
 }
 
 .form-image {
-  display: none;
+  position: relative;
+  display: inline-block;
 }
 
 /* Form Content */
@@ -61,6 +61,24 @@ h1 {
 
 p {
   font-size: 14px;
+}
+
+/* Btn-Back */
+.btn-back {
+  width: 30px;
+  height: 40px;
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  background-color: rgba(255, 255, 255, 0.7);
+  border: none;
+  padding: 5px;
+  cursor: pointer;
+}
+
+.podi {
+  font-size: 16px;
+  color: blue;
 }
 
 /* Form fields */
@@ -119,7 +137,7 @@ label {
   color: #b0b0b0;
 }
 
-.label-text{}
+.label-text {}
 
 /* Label Effect */
 input:focus+.label,
@@ -137,13 +155,13 @@ select:not([value="0"])+.label label {
   color: initial;
 }
 
-input:focus + .label,
-input:not(:placeholder-shown) + .label {
+input:focus+.label,
+input:not(:placeholder-shown)+.label {
   transform: translateY(-27px);
 }
 
-input:focus + .label label,
-input:not(:placeholder-shown) + .label label {
+input:focus+.label label,
+input:not(:placeholder-shown)+.label label {
   font-weight: 500;
   color: initial;
 }
@@ -176,7 +194,6 @@ button:hover {
   .form-image {
     display: block;
     flex-basis: 45%;
-    background-image: url("./img/ba");
     border-radius: 12px 0 0 12px;
   }
 
@@ -196,3 +213,6 @@ button:hover {
     font-size: 16px;
   }
 }
+
+/* toggle-eye */
+/* ide jön a szem */

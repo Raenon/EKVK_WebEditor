@@ -11,7 +11,10 @@
     <div class="sign-up-form">
     <!-- Left (Form Image) -->
     <div class="form-image">
-      <img src="{{asset('storage/img/1453916.jpg')}}" alt="" />
+      <img src="{{ asset('storage/img/1453916.jpg') }}" alt="" style="display: block;" />
+      <button class="btn-back">
+      <a href="{{ route('welcome') }}" style="text-decoration: none; color: black;">&lt;</a>
+      </button>
     </div>
     <!-- Right (Form Content) -->
     <form class="form-content" method="POST">
@@ -46,8 +49,9 @@
         <div class="label">
         <label for="confirmPassword">Jelszó Megerősítése*</label>
         </div>
-
-        <button class="mt-5" type="submit">Regisztrálás</button>
+      </div>
+      <p class="fhuj">Van már fiókod? <a class="podi" href="/login">Bejelentkezés</a>!</p>
+      <button class="mt-5" type="submit">Regisztrálás</button>
       </div>
     </form>
     </div>

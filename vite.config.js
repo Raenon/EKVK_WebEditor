@@ -7,7 +7,9 @@ export default defineConfig({
             input: ['resources/css/app.css', //Ide kell hozzá adni a plusz css-eket és js-t
                 'resources/css/login.css',
                 'resources/css/register.css',
-                'resources/js/app.js'],
+                'resources/js/app.js',
+                'resources/css/admin.css',
+            ],
             refresh: true,
         }),
     ],

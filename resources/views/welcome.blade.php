@@ -31,6 +31,10 @@
       <h4><strong>Tanácsadás</strong></h4>
       <p>Adózási és pénzügyi tanácsadás egy helyen.</p>
       </div>
+      <div class="service">
+        <h4><strong>Könyvvizsgálat</strong></h4>
+        <p>Teljes körű könyvvizsgálati szolgáltatás cégeknek.</p>
+        </div>
     </div>
     </div>
   </section>
