@@ -1,67 +1,196 @@
 @extends('layouts.master')
 
 @section('content')
-    <span class="sidebar-toggle" onclick="openSidebar()">
-        <i class="sidebar-icon bi bi-filter-left"></i>
-    </span>
-
-    <div class="sidebar" id="sidebar">
-        <div class="sidebar-header">
-            <h1 class="sidebar-title"></h1>
-            <i class="sidebar-close bi bi-x" onclick="openSidebar()"></i>
+    <div class="settings-container">
+        <!-- Sidebar -->
+        <div class="left-panel">
+            <div class="option active" onclick="changeContent(this, ''); showUser()">User</div>
+            <div class="option" onclick="changeContent(this, ''); showCompany()">Company</div>
+            <div class="option" onclick="changeContent(this, ''); showProject()">Project</div>
+            <div class="option" onclick="changeContent(this, ''); showBonusz()">+1</div>
         </div>
 
-        <div class="sidebar-divider"></div>
-
-        <div class="sidebar-search">
-            <i class="bi bi-search text-sm"></i>
-            <input type="text" placeholder="Search" class="sidebar-search-input" />
-        </div>
-
-        <div class="sidebar-link">
-            <i class="bi bi-house-door-fill"></i>
-            <span class="sidebar-link-text">Home</span>
-        </div>
-
-        <div class="sidebar-link">
-            <i class="bi bi-bookmark-fill"></i>
-            <span class="sidebar-link-text">Bookmark</span>
-        </div>
-
-        <div class="sidebar-divider"></div>
-
-        <div class="sidebar-dropdown" onclick="toggleDropdown()">
-            <div style="display: flex; align-items: center;">
-                <i class="bi bi-chat-left-text-fill"></i>
-                <span class="sidebar-link-text">Chatbox</span>
+        <!-- Main Content -->
+        <div class="main-content">
+            <div class="header">
+                <p><b>Beállítás</b></p>
             </div>
-            <span id="arrow" class="bi bi-chevron-down"
-                style="transform: rotate(180deg); transition: transform 0.3s;"></span>
-        </div>
 
-        <div class="submenu hidden" id="submenu">
-            <h1 class="submenu-item">Social</h1>
-            <h1 class="submenu-item">Personal</h1>
-            <h1 class="submenu-item">Friends</h1>
-        </div>
+            <div id="mainContent"></div>
 
-        <div class="sidebar-link">
-            <i class="bi bi-box-arrow-in-right"></i>
-            <span class="sidebar-link-text">Logout</span>
+            <!-- User Table -->
+            <div class="table-container" id="userTable">
+                <table>
+                    <thead>
+                        <tr>
+                            <th colspan="5">User</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Felhasználónév</td>
+                            <td>A felhasználó egyedi azonosító neve</td>
+                            <td>-</td>
+                            <td><input type="text" placeholder="Felhasználó név"></td>
+                        </tr>
+                        <tr>
+                            <td>Email cím</td>
+                            <td>A fiókhoz társított email</td>
+                            <td>-</td>
+                            <td><input type="text" placeholder="Email cím"></td>
+                        </tr>
+                        <tr>
+                            <td>Jelszó</td>
+                            <td>A fiókhoz tartozó jelszó</td>
+                            <td>-</td>
+                            <td><input type="text" placeholder="Jelszó"></td>
+                            
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- Company Table -->
+            <div class="table-container" id="companyTable" style="display: none;">
+                <table>
+                    <thead>
+                        <tr>
+                            <th colspan="5">Company</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Cég neve</td>
+                            <td>A vállalat hivatalos neve</td>
+                            <td>-</td>
+                            <td><input type="text" placeholder="Cég név"></td>
+                        </tr>
+                        <tr>
+                            <td>Adószám</td>
+                            <td>A cég adószáma</td>
+                            <td>-</td>
+                            <td><input type="text" placeholder="Cég Adószám"></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- Project táblázat -->
+            <div class="table-container" id="projectTable" style="display: none;">
+                <table>
+                    <thead>
+                        <tr>
+                            <th colspan="5">Project</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Új cég neve</td>
+                            <td>Adja meg az új cég nevét</td>
+                            <td>-</td>
+                            <td><input type="text" placeholder="Pl: Új Cég Kft."></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>Email</td>
+                            <td>Kapcsolattartó email cím</td>
+                            <td>-</td>
+                            <td><input type="email" placeholder="email@example.com"></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>Telefonszám</td>
+                            <td>Kapcsolattartó telefonszáma</td>
+                            <td>-</td>
+                            <td><input type="text" placeholder="+36..."></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>Cím</td>
+                            <td>Székhely vagy telephely</td>
+                            <td>-</td>
+                            <td><input type="text" placeholder="Cím megadása"></td>
+                            <td></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- Bonusz táblázat -->
+            <div class="table-container" id="bonuszTable" style="display: none;">
+                <table>
+                    <thead>
+                        <tr>
+                            <th colspan="5">Plusz 1 ha kellene</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Új cég neve</td>
+                            <td>Adja meg az új cég nevét</td>
+                            <td>-</td>
+                            <td><input type="text" placeholder="Pl: Új Cég Kft."></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>Email</td>
+                            <td>Kapcsolattartó email cím</td>
+                            <td>-</td>
+                            <td><input type="email" placeholder="email@example.com"></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>Telefonszám</td>
+                            <td>Kapcsolattartó telefonszáma</td>
+                            <td>-</td>
+                            <td><input type="text" placeholder="+36..."></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>Cím</td>
+                            <td>Székhely vagy telephely</td>
+                            <td>-</td>
+                            <td><input type="text" placeholder="Cím megadása"></td>
+                            <td></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
         </div>
     </div>
 
     <script>
-        function openSidebar() {
-            const sidebar = document.getElementById('sidebar');
-            sidebar.classList.toggle('hidden');
+        function changeContent(element, text) {
+            document.getElementById("mainContent").innerText = text;
+            document.querySelectorAll('.left-panel .option').forEach(opt => opt.classList.remove('active'));
+            element.classList.add('active');
         }
 
-        function toggleDropdown() {
-            const submenu = document.getElementById('submenu');
-            const arrow = document.getElementById('arrow');
-            submenu.classList.toggle('hidden');
-            arrow.style.transform = submenu.classList.contains('hidden') ? 'rotate(180deg)' : 'rotate(0deg)';
+        function hideAllTables() {
+            document.getElementById('userTable').style.display = 'none';
+            document.getElementById('companyTable').style.display = 'none';
+            document.getElementById('projectTable').style.display = 'none';
+            document.getElementById('bonuszTable').style.display = 'none';
+        }
+
+        function showUser() {
+            hideAllTables();
+            document.getElementById('userTable').style.display = 'block';
+        }
+
+        function showCompany() {
+            hideAllTables();
+            document.getElementById('companyTable').style.display = 'block';
+        }
+
+        function showProject() {
+            hideAllTables();
+            document.getElementById('projectTable').style.display = 'block';
+        }
+
+        function showBonusz() {
+            hideAllTables();
+            document.getElementById('bonuszTable').style.display = 'block';
         }
     </script>
 @endsection
