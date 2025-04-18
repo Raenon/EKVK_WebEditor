@@ -14,7 +14,7 @@ class UsersController extends Controller
     public function index()
     {
         $users = Users::all()->sortBy("id");
-        return view("test.admin.user.index", ["users" => $users]);
+        return view("admin.index", ["users" => $users]);
     }
 
     /**

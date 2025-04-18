@@ -37,12 +37,16 @@ Route::get('/account', function () {
 })->name('account');
 
 Route::get('/admin', function () {
-    return view('test.admin.index');
+    return view('admin.index');
 })->name('admin');
 
 Route::get('/company', function () {
     return view('company.index');
 })->name('company');
+
+Route::get('/editor', function () {
+    return view('editor.index');
+})->name('editor');
 
 Route::resource('/admin/user', UsersController::class);
 
