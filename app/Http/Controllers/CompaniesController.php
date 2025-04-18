@@ -13,7 +13,8 @@ class CompaniesController extends Controller
      */
     public function index()
     {
-        //
+        $companies = Companies::all()->sortBy("id");
+        return view("test.admin.company.index", ["companies" => $companies]);
     }
 
     /**

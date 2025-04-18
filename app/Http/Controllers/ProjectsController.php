@@ -13,7 +13,8 @@ class ProjectsController extends Controller
      */
     public function index()
     {
-        //
+        $projects = Projects::all()->sortBy("id");
+        return view("test.admin.project.index", ["projects" => $projects]);
     }
 
     /**
