@@ -455,7 +455,7 @@ footer {
   padding: 10px 12px;
   border-radius: 5px;
   transition: background-color 0.3s, color 0.3s;
-} 
+}
 
 .left-panel .deactive {
   padding: 10px;
@@ -561,4 +561,13 @@ footer {
 .btncreate:hover {
   background-color: #237a27;
   color: #ccc;
+}
+
+.next {
+  padding: 6px 12px;
+  background-color: #182535;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
 }

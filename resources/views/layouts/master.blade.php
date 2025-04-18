@@ -16,7 +16,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 
-    @vite(["resources/css/app.css", "resources/js/app.js", "resources/css/admin.css"])
+    @vite(["resources/css/app.css", "resources/js/app.js", "resources/css/admin.css", "resources/css/company.css"])
     @yield('vite')
     <title>EKVK</title>
 </head>

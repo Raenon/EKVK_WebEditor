@@ -7,9 +7,9 @@
             <div class="option active"
                 onclick="changeContent(this, ''); showAccountSettings()">Saját fiók
             </div>
-            <div class="option" onclick="changeContent(this, ''); showCompanySettings()">Cég Beállítás
+            <div class="option" onclick="changeContent(this, ''); showCreateCompany()">Új cég létrehozása
             </div>
-            <div class="option" onclick="changeContent(this, ''); showCreateCompany()">Új Cég Létrehozás
+            <div class="option" onclick="changeContent(this, ''); showCompanySettings()">Cég beállítás
             </div>
             <button class="deactive">DEAKTIVÁLÁS</button>
         </div>
@@ -56,39 +56,12 @@
                 </table>
             </div>
 
-            <!-- Company Settings -->
-            <div class="table-container" id="companyTableContainer" style="display: none;">
+             <!-- Create Company táblázat -->
+             <div class="table-container" id="createCompanyTableContainer" style="display: none;">
                 <table>
                     <thead>
                         <tr>
-                            <th colspan="5">Cég Beállítás</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>Cég neve</td>
-                            <td>A vállalat hivatalos neve</td>
-                            <td>-</td>
-                            <td><input type="text" placeholder="Cég név"></td>
-                            <td><button class="btnedit">Módosítás</button></td>
-                        </tr>
-                        <tr>
-                            <td>Adószám</td>
-                            <td>A cég adószáma</td>
-                            <td>-</td>
-                            <td><input type="text" placeholder="Cég Adószám"></td>
-                            <td><button class="btnedit">Módosítás</button></td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-
-            <!-- Create Company táblázat -->
-            <div class="table-container" id="createCompanyTableContainer" style="display: none;">
-                <table>
-                    <thead>
-                        <tr>
-                            <th colspan="5">Új cég létrehozás</th>
+                            <th colspan="5">Új cég létrehozása</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -128,6 +101,26 @@
                     </tbody>
                 </table>
             </div>
+
+            <!-- Company Settings -->
+            <div class="table-container" id="companyTableContainer" style="display: none;">
+                <table>
+                    <thead>
+                        <tr>
+                            <th colspan="5">Cég beállítás</th>
+                        </tr>
+                    </thead>
+                    <tbody>                           
+                        <tr>
+                            <td colspan="4">További beállításért kattints a gombra</td>
+                            <td><a href="/company"><button class="next">Beállítás</button></a></td>
+                            
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+           
         </div>
     </div>
 
