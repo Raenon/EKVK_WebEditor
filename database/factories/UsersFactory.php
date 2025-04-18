@@ -17,7 +17,10 @@ class UsersFactory extends Factory
     public function definition(): array
     {
         return [
-            //
+            'username' => fake()->name(),
+            'email' => fake()->email(),
+            'password' => fake()->word(),
+            'role' =>fake()->numberBetween(2,3)
         ];
     }
 }

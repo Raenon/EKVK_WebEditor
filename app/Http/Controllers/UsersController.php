@@ -13,7 +13,8 @@ class UsersController extends Controller
      */
     public function index()
     {
-        //
+        $users = Users::all()->sortBy("id");
+        return view("test.admin.user.index", ["users" => $users]);
     }
 
     /**
@@ -43,24 +44,28 @@ class UsersController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Users $users)
+    public function edit(Users $user)
     {
-        //
+        return view('test.admin.user.edit',[
+            'user' => $user
+        ]);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateUsersRequest $request, Users $users)
+    public function update(UpdateUsersRequest $request, Users $user)
     {
-        //
+        $user->update($request->all());
+        return redirect()->route("user.index")->with("success", $user->username . " frissítése megtörtént");
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Users $users)
+    public function destroy(Users $user)
     {
-        //
+        $user->delete();
+        return back()->with("success", $user->username . " törlése megtörtént");
     }
 }
