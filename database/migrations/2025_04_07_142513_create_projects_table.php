@@ -19,6 +19,7 @@ return new class extends Migration
             $table->string('project_description');
             $table->json('project_data');
             $table->timestamps();
+            $table->softDeletes();
 
         });
     }

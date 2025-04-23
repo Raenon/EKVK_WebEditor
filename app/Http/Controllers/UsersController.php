@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Users;
 use App\Http\Requests\StoreUsersRequest;
 use App\Http\Requests\UpdateUsersRequest;
+use Illuminate\Support\Facades\Hash;
 
 class UsersController extends Controller
 {
@@ -14,7 +15,7 @@ class UsersController extends Controller
     public function index()
     {
         $users = Users::all()->sortBy("id");
-        return view("test.admin.user.index", ["users" => $users]);
+        return view("admin.index", ["users" => $users]);
     }
 
     /**
@@ -30,7 +31,12 @@ class UsersController extends Controller
      */
     public function store(StoreUsersRequest $request)
     {
-        //
+        $user = new Users();
+        $user->username = $request->username;
+        $user->email = $request->email;
+        $user->password = Hash::make($request->password);
+        $user->role = $request->role;
+        $user->save();
     }
 
     /**
@@ -46,7 +52,7 @@ class UsersController extends Controller
      */
     public function edit(Users $user)
     {
-        return view('test.admin.user.edit',[
+        return view('admin.user.edit',[
             'user' => $user
         ]);
     }
@@ -57,7 +63,7 @@ class UsersController extends Controller
     public function update(UpdateUsersRequest $request, Users $user)
     {
         $user->update($request->all());
-        return redirect()->route("user.index")->with("success", $user->username . " frissítése megtörtént");
+        return redirect()->route("admin");
     }
 
     /**
@@ -68,4 +74,5 @@ class UsersController extends Controller
         $user->delete();
         return back()->with("success", $user->username . " törlése megtörtént");
     }
+
 }

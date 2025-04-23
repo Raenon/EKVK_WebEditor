@@ -1,5 +1,6 @@
 @extends('layouts.master')
 
+
 @section('content')
     <div class="settings-container">
         <!-- Bal oldali menü -->
@@ -7,11 +8,18 @@
             <div class="option active"
                 onclick="changeContent(this, ''); showAccountSettings()">Saját fiók
             </div>
-            <div class="option" onclick="changeContent(this, ''); showCompanySettings()">Cég Beállítás
-            </div>
+             @if (Auth::user()->role == "3")
+                <div class="option" onclick="changeContent(this, ''); showCompanySettings()">Cég Beállítás
+                </div>
+            @endif
+
             <div class="option" onclick="changeContent(this, ''); showCreateCompany()">Új Cég Létrehozás
             </div>
+            <form action="{{ route('user.destroy', Auth::user()) }} " method="POST" >
+                @csrf
+                @method('DELETE')
             <button class="deactive">DEAKTIVÁLÁS</button>
+            </form>
         </div>
 
         <!-- Tartalom -->
@@ -23,6 +31,7 @@
             <div id="mainContent"></div>
 
             <!-- Account Settings táblázat -->
+
             <div class="table-container" id="accountTableContainer">
                 <table>
                     <thead>
@@ -33,23 +42,20 @@
                     <tbody>
                         <tr>
                             <td>Felhasználónév</td>
-                            <td>A felhasználó egyedi azonosító neve</td>
-                            <td>-</td>
-                            <td><input type="text" placeholder="Felhasználó név"></td>
+                            <td><input type="text" placeholder="{{ Auth::user()->username }}"></td>
                             <td><button class="btnedit">Módosítás</button></td>
                         </tr>
                         <tr>
                             <td>Email cím</td>
-                            <td>A fiókhoz társított email</td>
-                            <td>-</td>
-                            <td><input type="text" placeholder="Email cím"></td>
+                            <td><input type="text" placeholder="{{ Auth::user()->email }}"></td>
                             <td><button class="btnedit">Módosítás</button></td>
                         </tr>
                         <tr>
                             <td>Jelszó</td>
-                            <td>A fiókhoz tartozó jelszó</td>
-                            <td>-</td>
-                            <td><input type="text" placeholder="Jelszó"></td>
+                            <td><input type="password" placeholder="{{
+
+                               str_repeat('*',strlen(Auth::user()->password))
+                            }}"></td>
                             <td><button class="btnedit">Módosítás</button></td>
                         </tr>
                     </tbody>

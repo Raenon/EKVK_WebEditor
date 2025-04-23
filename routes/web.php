@@ -1,9 +1,11 @@
 <?php
 
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\AdminController;
 use App\Http\Controllers\UsersController;
 use App\Http\Controllers\CompaniesController;
 use App\Http\Controllers\ProjectsController;
+use App\Http\Middleware\Admin;
 use Illuminate\Support\Facades\Route;
 
 //TODO:Ezt majd át kell később
@@ -36,19 +38,19 @@ Route::get('/account', function () {
     return view('account.index');
 })->name('account');
 
-Route::get('/admin', function () {
-    return view('test.admin.index');
-})->name('admin');
-
 Route::get('/company', function () {
     return view('company.index');
 })->name('company');
 
+/* Admin */
+
+Route::get('/admin', [AdminController::class, "index"])->name('admin');
+
 Route::resource('/admin/user', UsersController::class);
 
-Route::resource('/admin/company', CompaniesController::class);
+Route::post('/admin/user/restore', [AdminController::class, "restoreUser"])->name('userRestore');
 
-Route::resource('/admin/project', ProjectsController::class);
+/* Auth */
 
 Route::post('/register', [AuthController::class, "register"]);
 
