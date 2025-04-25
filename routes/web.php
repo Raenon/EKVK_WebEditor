@@ -38,13 +38,23 @@ Route::get('/account', function () {
     return view('account.index');
 })->name('account');
 
+Route::get('/admin', function () {
+    return view('admin.index');
+})->name('admin');
+
 Route::get('/company', function () {
     return view('company.index');
 })->name('company');
 
+Route::get('/editor', function () {
+    return view('editor.index');
+})->name('editor');
+
+
 /* Admin */
 
 Route::get('/admin', [AdminController::class, "index"])->name('admin');
+
 
 Route::resource('/admin/user', UsersController::class);
 
