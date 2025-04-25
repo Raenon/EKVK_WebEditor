@@ -85,8 +85,7 @@ class AuthController extends Controller
             dd("Users hiba");
             return back()->withErrors('message', 'Nem egyezik az email vagy a jelszó');
         }
-
-        if (Hash::check($request->password, $Users->password)){
+         if (! Hash::check($request->password, $Users->password)){
             return back()->withErrors('message', 'Nem egyezik az email vagy a jelszó');
         }
 

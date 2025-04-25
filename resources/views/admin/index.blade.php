@@ -33,15 +33,11 @@
                             <th>role</th>
                             <th>created_at</th>
                             <th>updated_at</th>
-                            <th>deleted_at</th>
+
                         </tr>
                     </thead>
                    <tbody>
                    @foreach($users as $user)
-                    @if ($user->deleted_at == NULL)
-
-
-
                          <tr>
                               <td>{{ $user->id }}</td>
                               <td>{{ $user->username }}</td>
@@ -50,7 +46,7 @@
                             <td>{{ $user->role }}</td>
                             <td>{{$user->created_at}}</td>
                             <td>{{$user->updated_at}}</td>
-                            <td>{{$user->deleted_at}}</td>
+
                             <td>
                                 <form action="{{ route('user.edit', $user) }}" method="GET">
                                     <button
@@ -65,7 +61,6 @@
                             </td>
 
                          </tr>
-                         @endif
                    @endforeach
                    </tbody>
                 </table>
@@ -81,7 +76,7 @@
                         <th>tax_num</th>
                         <th>created_at</th>
                         <th>updated_at</th>
-                        <th>deleted_at</th>
+
                     </thead>
                     <tbody>
                         @foreach($companies as $company)
@@ -93,7 +88,7 @@
                                    <td>{{ $company->tax_num }}</td>
                                  <td>{{$user->created_at}}</td>
                                  <td>{{$user->updated_at}}</td>
-                                 <td>{{$user->deleted_at}}</td>
+
                                  <td>
                                      <form action="{{-- {{ route('user.edit', $user) }} --}}" method="GET">
                                          <button
@@ -186,8 +181,9 @@
                             <td>{{$user->deleted_at}}</td>
 
                             <td>
-                                <form action="{{ route('userRestore' , $user) }}" method="POST">
+                                <form action="{{ route('user.restore' , $user->id) }}" method="POST">
                                     @csrf
+                                    @method('PATCH')
                                     <button class="btn btn-danger ms-5"><i class="bi bi-arrow-counterclockwise"></i>Restore</button>
                                 </form>
                             </td>
@@ -198,6 +194,84 @@
                    </tbody>
                 </table>
             </div>
+
+            <div class="table-container" id="companyTrash" style="display: none;">
+                <table>
+                    <thead>
+                        <th>id</th>
+                        <th>company_name</th>
+                        <th>company_email</th>
+                        <th>tax_num</th>
+                        <th>created_at</th>
+                        <th>updated_at</th>
+                        <th>deleted_at</th>
+                    </thead>
+                    <tbody>
+                        @foreach($companies as $company)
+                        @if ($company->deleted_at != NULL)
+                              <tr>
+                                   <td>{{ $company->id }}</td>
+                                   <td>{{ $company->company_name }}</td>
+                                   <td>{{ $company->company_email }}</td>
+                                   <td>{{ $company->tax_num }}</td>
+                                 <td>{{$user->created_at}}</td>
+                                 <td>{{$user->updated_at}}</td>
+                                 <td>{{$user->deleted_at}}</td>
+                                 <td>
+                                     <form action="{{-- {{ route('user.destroy', $company) }} --}}" method="POST">
+                                         @csrf
+                                         @method('DELETE')
+                                         <button class="btn btn-danger"><i class="bi bi-trash3"></i></button>
+                                     </form>
+                                 </td>
+
+                              </tr>
+                              @endif
+                        @endforeach
+                        </tbody>
+                </table>
+            </div>
+
+            <div class="table-container" id="projectTrash" style="display: none;">
+                <table>
+                    <thead>
+                        <tr>
+                            <th colspan="5">Project</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Új cég neve</td>
+                            <td>Adja meg az új cég nevét</td>
+                            <td>-</td>
+                            <td><input type="text" placeholder="Pl: Új Cég Kft."></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>Email</td>
+                            <td>Kapcsolattartó email cím</td>
+                            <td>-</td>
+                            <td><input type="email" placeholder="email@example.com"></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>Telefonszám</td>
+                            <td>Kapcsolattartó telefonszáma</td>
+                            <td>-</td>
+                            <td><input type="text" placeholder="+36..."></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>Cím</td>
+                            <td>Székhely vagy telephely</td>
+                            <td>-</td>
+                            <td><input type="text" placeholder="Cím megadása"></td>
+                            <td></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
         </div>
     </div>
 
@@ -213,6 +287,8 @@
             document.getElementById('companyTable').style.display = 'none';
             document.getElementById('projectTable').style.display = 'none';
             document.getElementById('userTrash').style.display = 'none';
+            document.getElementById('companyTrash').style.display = 'none';
+            document.getElementById('projectTrash').style.display = 'none';
         }
 
         function showUser() {
@@ -233,6 +309,15 @@
         function showUserTrashed() {
             hideAllTables();
             document.getElementById('userTrash').style.display = 'block';
+        }
+
+        function showCompanyTrashed() {
+            hideAllTables();
+            document.getElementById('companyTrash').style.display = 'block';
+        }
+        function showProjectTrashed() {
+            hideAllTables();
+            document.getElementById('projectTrash').style.display = 'block';
         }
     </script>
 @endsection

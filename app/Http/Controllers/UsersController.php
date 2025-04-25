@@ -75,4 +75,11 @@ class UsersController extends Controller
         return back()->with("success", $user->username . " törlése megtörtént");
     }
 
+    public function restore($id){
+
+        $user = Users::withTrashed()->find($id);
+        $user->restore();
+        return back()->with("success", $user->name . " helyreállítása megtörtént");
+    }
+
 }

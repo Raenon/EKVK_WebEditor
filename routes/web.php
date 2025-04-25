@@ -48,7 +48,9 @@ Route::get('/admin', [AdminController::class, "index"])->name('admin');
 
 Route::resource('/admin/user', UsersController::class);
 
-Route::post('/admin/user/restore', [AdminController::class, "restoreUser"])->name('userRestore');
+Route::resource('/admin/company', CompaniesController::class);
+
+Route::patch('/admin/user/restore/{user}', [UsersController::class, "restore"])->name('user.restore');
 
 /* Auth */
 

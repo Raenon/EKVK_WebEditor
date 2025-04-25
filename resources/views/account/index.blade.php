@@ -2,19 +2,23 @@
 
 
 @section('content')
+@if(Auth::check())
     <div class="settings-container">
         <!-- Bal oldali menü -->
         <div class="left-panel">
             <div class="option active"
                 onclick="changeContent(this, ''); showAccountSettings()">Saját fiók
             </div>
+
              @if (Auth::user()->role == "3")
                 <div class="option" onclick="changeContent(this, ''); showCompanySettings()">Cég Beállítás
                 </div>
+
             @endif
 
             <div class="option" onclick="changeContent(this, ''); showCreateCompany()">Új Cég Létrehozás
             </div>
+
             <form action="{{ route('user.destroy', Auth::user()) }} " method="POST" >
                 @csrf
                 @method('DELETE')
@@ -171,4 +175,9 @@
             document.getElementById('createCompanyTableContainer').style.display = 'block';
         }
     </script>
+
+    @else
+    <p>User not logged in</p>
+    @endif
 @endsection
+
