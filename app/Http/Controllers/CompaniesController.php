@@ -13,7 +13,8 @@ class CompaniesController extends Controller
      */
     public function index()
     {
-        //
+        $companies = Companies::all()->sortBy("id");
+        return view("admin.index", ["companies" => $companies]);
     }
 
     /**
@@ -29,13 +30,17 @@ class CompaniesController extends Controller
      */
     public function store(StoreCompaniesRequest $request)
     {
-        //
+        $company = new Companies();
+        $company->company_name = $request->company_name;
+        $company->company_email = $request->company_email;
+        $company->tax_num = $request->tax_num;
+        $company->save();
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(Companies $companies)
+    public function show(Companies $company)
     {
         //
     }
@@ -43,24 +48,35 @@ class CompaniesController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Companies $companies)
+    public function edit(Companies $company)
     {
-        //
+        return view('admin.company.edit',[
+            'company' => $company
+        ]);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateCompaniesRequest $request, Companies $companies)
+    public function update(UpdateCompaniesRequest $request, Companies $company)
     {
-        //
+        $company->update($request->all());
+        return redirect()->route("admin");
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Companies $companies)
+    public function destroy(Companies $company)
     {
-        //
+        $company->delete();
+        return back()->with("success", $company->username . " törlése megtörtént");
+    }
+
+    public function restore($id){
+
+        $company = Companies::withTrashed()->find($id);
+        $company->restore();
+        return back()->with("success", $company->name . " helyreállítása megtörtént");
     }
 }

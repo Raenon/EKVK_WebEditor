@@ -1,17 +1,29 @@
 @extends('layouts.master')
 
+
 @section('content')
+@if(Auth::check())
     <div class="settings-container">
         <!-- Bal oldali menü -->
         <div class="left-panel">
             <div class="option active"
                 onclick="changeContent(this, ''); showAccountSettings()">Saját fiók
             </div>
-            <div class="option" onclick="changeContent(this, ''); showCreateCompany()">Új cég létrehozása
+
+             @if (Auth::user()->role == "3")
+                <div class="option" onclick="changeContent(this, ''); showCompanySettings()">Cég Beállítás
+                </div>
+
+            @endif
+
+            <div class="option" onclick="changeContent(this, ''); showCreateCompany()">Új Cég Létrehozás
             </div>
-            <div class="option" onclick="changeContent(this, ''); showCompanySettings()">Cég beállítás
-            </div>
+
+            <form action="{{ route('user.destroy', Auth::user()) }} " method="POST" >
+                @csrf
+                @method('DELETE')
             <button class="deactive">DEAKTIVÁLÁS</button>
+            </form>
         </div>
 
         <!-- Tartalom -->
@@ -23,6 +35,7 @@
             <div id="mainContent"></div>
 
             <!-- Account Settings táblázat -->
+
             <div class="table-container" id="accountTableContainer">
                 <table>
                     <thead>
@@ -33,35 +46,59 @@
                     <tbody>
                         <tr>
                             <td>Felhasználónév</td>
-                            <td>A felhasználó egyedi azonosító neve</td>
-                            <td>-</td>
-                            <td><input type="text" placeholder="Felhasználó név"></td>
+                            <td><input type="text" placeholder="{{ Auth::user()->username }}"></td>
                             <td><button class="btnedit">Módosítás</button></td>
                         </tr>
                         <tr>
                             <td>Email cím</td>
-                            <td>A fiókhoz társított email</td>
-                            <td>-</td>
-                            <td><input type="text" placeholder="Email cím"></td>
+                            <td><input type="text" placeholder="{{ Auth::user()->email }}"></td>
                             <td><button class="btnedit">Módosítás</button></td>
                         </tr>
                         <tr>
                             <td>Jelszó</td>
-                            <td>A fiókhoz tartozó jelszó</td>
-                            <td>-</td>
-                            <td><input type="text" placeholder="Jelszó"></td>
+                            <td><input type="password" placeholder="{{
+
+                               str_repeat('*',strlen(Auth::user()->password))
+                            }}"></td>
                             <td><button class="btnedit">Módosítás</button></td>
                         </tr>
                     </tbody>
                 </table>
             </div>
 
-             <!-- Create Company táblázat -->
-             <div class="table-container" id="createCompanyTableContainer" style="display: none;">
+            <!-- Company Settings -->
+            <div class="table-container" id="companyTableContainer" style="display: none;">
                 <table>
                     <thead>
                         <tr>
-                            <th colspan="5">Új cég létrehozása</th>
+                            <th colspan="5">Cég Beállítás</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Cég neve</td>
+                            <td>A vállalat hivatalos neve</td>
+                            <td>-</td>
+                            <td><input type="text" placeholder="Cég név"></td>
+                            <td><button class="btnedit">Módosítás</button></td>
+                        </tr>
+                        <tr>
+                            <td>Adószám</td>
+                            <td>A cég adószáma</td>
+                            <td>-</td>
+                            <td><input type="text" placeholder="Cég Adószám"></td>
+                            <td><button class="btnedit">Módosítás</button></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- Create Company táblázat -->
+            <div class="table-container" id="createCompanyTableContainer" style="display: none;">
+                <table>
+                    <thead>
+                        <tr>
+                            <th colspan="5">Új cég létrehozás</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -101,26 +138,6 @@
                     </tbody>
                 </table>
             </div>
-
-            <!-- Company Settings -->
-            <div class="table-container" id="companyTableContainer" style="display: none;">
-                <table>
-                    <thead>
-                        <tr>
-                            <th colspan="5">Cég beállítás</th>
-                        </tr>
-                    </thead>
-                    <tbody>                           
-                        <tr>
-                            <td colspan="4">További beállításért kattints a gombra</td>
-                            <td><a href="/company"><button class="next">Beállítás</button></a></td>
-                            
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-
-           
         </div>
     </div>
 
@@ -158,4 +175,9 @@
             document.getElementById('createCompanyTableContainer').style.display = 'block';
         }
     </script>
+
+    @else
+    <p>User not logged in</p>
+    @endif
 @endsection
+

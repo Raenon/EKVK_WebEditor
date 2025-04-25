@@ -4,13 +4,15 @@
   @vite(["resources/css/login.css"])
 @endsection
 
-@section('content')
 
+
+@section('content')
 
   <div class="container center">
     <div class="sign-up-form">
-    <button class="btn-back">
-      <a href="{{ route('welcome') }}"><</a></button>
+        </ol>
+        <a href="{{ route('welcome') }}"><button class="btn-back">
+            <</button></a>
       <!-- Right (Form Content) -->
       <form class="form-content" method="POST">
         @csrf

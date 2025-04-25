@@ -1,6 +1,11 @@
 <?php
 
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\AdminController;
+use App\Http\Controllers\UsersController;
+use App\Http\Controllers\CompaniesController;
+use App\Http\Controllers\ProjectsController;
+use App\Http\Middleware\Admin;
 use Illuminate\Support\Facades\Route;
 
 //TODO:Ezt majd át kell később
@@ -41,9 +46,24 @@ Route::get('/company', function () {
     return view('company.index');
 })->name('company');
 
-Route::get('/user', function () {
-    return view('user.index');
-})->name('user');
+Route::get('/editor', function () {
+    return view('editor.index');
+})->name('editor');
+
+
+/* Admin */
+
+Route::get('/admin', [AdminController::class, "index"])->name('admin');
+
+Route::resource('/admin/user', UsersController::class);
+
+Route::resource('/admin/company', CompaniesController::class);
+
+Route::patch('/admin/user/restore/{user}', [UsersController::class, "restore"])->name('user.restore');
+
+Route::patch('/admin/company/restore/{user}', [CompaniesController::class, "restore"])->name('company.restore');
+
+/* Auth */
 
 Route::post('/register', [AuthController::class, "register"]);
 

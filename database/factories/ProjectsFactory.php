@@ -17,7 +17,10 @@ class ProjectsFactory extends Factory
     public function definition(): array
     {
         return [
-            //
+            'user_id' => fake()->numberBetween(1,16),
+            'project_name' => fake()->word(),
+            'project_description' => fake()->paragraph(),
+            'project_data' => null
         ];
     }
 }
