@@ -72,4 +72,11 @@ class CompaniesController extends Controller
         $company->delete();
         return back()->with("success", $company->username . " törlése megtörtént");
     }
+
+    public function restore($id){
+
+        $company = Companies::withTrashed()->find($id);
+        $company->restore();
+        return back()->with("success", $company->name . " helyreállítása megtörtént");
+    }
 }

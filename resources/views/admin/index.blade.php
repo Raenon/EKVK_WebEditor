@@ -15,7 +15,7 @@
 
         <!-- Main Content -->
         <div class="main-content">
-            <div class="header">
+            <div class="header" id="tableHeader">
                 <p id="tableTitle"><b>Leöntöttem almalével a billentyűzetem és ragad a törlés gomb :3</b></p>
             </div>
 
@@ -38,6 +38,7 @@
                     </thead>
                    <tbody>
                    @foreach($users as $user)
+                   @if ($user->deleted_at == null)
                          <tr>
                               <td>{{ $user->id }}</td>
                               <td>{{ $user->username }}</td>
@@ -61,9 +62,11 @@
                             </td>
 
                          </tr>
+                         @endif
                    @endforeach
                    </tbody>
                 </table>
+
             </div>
 
             <!-- Company Table -->
@@ -80,22 +83,22 @@
                     </thead>
                     <tbody>
                         @foreach($companies as $company)
-
+                        @if ($company->deleted_at == null)
                               <tr>
                                    <td>{{ $company->id }}</td>
                                    <td>{{ $company->company_name }}</td>
                                    <td>{{ $company->company_email }}</td>
                                    <td>{{ $company->tax_num }}</td>
-                                 <td>{{$user->created_at}}</td>
-                                 <td>{{$user->updated_at}}</td>
+                                 <td>{{$company->created_at}}</td>
+                                 <td>{{$company->updated_at}}</td>
 
                                  <td>
-                                     <form action="{{-- {{ route('user.edit', $user) }} --}}" method="GET">
+                                     <form action="{{ route('company.edit', $company) }}" method="GET">
                                          <button
                                              class="btn btn-warning"><i class="bi bi-pencil-square"></i></button></form>
                                  </td>
                                  <td>
-                                     <form action="{{-- {{ route('user.destroy', $user) }} --}}" method="POST">
+                                     <form action="{{ route('company.destroy', $company) }}" method="POST">
                                          @csrf
                                          @method('DELETE')
                                          <button class="btn btn-danger"><i class="bi bi-trash3"></i></button>
@@ -103,6 +106,7 @@
                                  </td>
 
                               </tr>
+                              @endif
                         @endforeach
                         </tbody>
                 </table>
@@ -149,7 +153,7 @@
                 </table>
             </div>
 
-            <!-- Bonusz táblázat -->
+            <!-- Deleted users táblázat -->
             <div class="table-container" id="userTrash" style="display: none;">
                 <table class="table-striped ">
                     <thead >
@@ -184,7 +188,7 @@
                                 <form action="{{ route('user.restore' , $user->id) }}" method="POST">
                                     @csrf
                                     @method('PATCH')
-                                    <button class="btn btn-danger ms-5"><i class="bi bi-arrow-counterclockwise"></i>Restore</button>
+                                    <button class="btn btn-danger ms-1"><i class="bi bi-arrow-counterclockwise"></i>Restore</button>
                                 </form>
                             </td>
 
@@ -195,6 +199,7 @@
                 </table>
             </div>
 
+            <!-- Deleted Company táblázat -->
             <div class="table-container" id="companyTrash" style="display: none;">
                 <table>
                     <thead>
@@ -214,15 +219,15 @@
                                    <td>{{ $company->company_name }}</td>
                                    <td>{{ $company->company_email }}</td>
                                    <td>{{ $company->tax_num }}</td>
-                                 <td>{{$user->created_at}}</td>
-                                 <td>{{$user->updated_at}}</td>
-                                 <td>{{$user->deleted_at}}</td>
+                                 <td>{{$company->created_at}}</td>
+                                 <td>{{$company->updated_at}}</td>
+                                 <td>{{$company->deleted_at}}</td>
                                  <td>
-                                     <form action="{{-- {{ route('user.destroy', $company) }} --}}" method="POST">
-                                         @csrf
-                                         @method('DELETE')
-                                         <button class="btn btn-danger"><i class="bi bi-trash3"></i></button>
-                                     </form>
+                                    <form action="{{ route('company.restore' , $company->id) }}" method="POST">
+                                        @csrf
+                                        @method('PATCH')
+                                        <button class="btn btn-danger ms-3"><i class="bi bi-arrow-counterclockwise"></i>Restore</button>
+                                    </form>
                                  </td>
 
                               </tr>

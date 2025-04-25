@@ -60,7 +60,7 @@
                             <hr>
                                 <li class="nav-item">
                                     <a class="nav-link active" aria-current="page" href="{{route('admin')}}">
-                                        <i class="bi bi-grid-1x2"></i> Admin</a>
+                                        <i class="bi bi-grid-1x2"></i> Admin Dashboard </a>
                                 </li>
                             @endif
                         @endif

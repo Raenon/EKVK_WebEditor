@@ -16,13 +16,13 @@ class UsersSeeder extends Seeder
      */
     public function run(): void
     {
-        DB::table('users')->insert([
+
+        Users::factory()->create([
             'username' => 'Admin',
             'email' => 'admin@email.com',
             'password' => Hash::make('admin'),
             'role' => 1
         ]);
-
         Users::factory(15)->create();
 
 

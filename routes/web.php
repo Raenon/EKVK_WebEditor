@@ -52,6 +52,8 @@ Route::resource('/admin/company', CompaniesController::class);
 
 Route::patch('/admin/user/restore/{user}', [UsersController::class, "restore"])->name('user.restore');
 
+Route::patch('/admin/company/restore/{user}', [CompaniesController::class, "restore"])->name('company.restore');
+
 /* Auth */
 
 Route::post('/register', [AuthController::class, "register"]);
