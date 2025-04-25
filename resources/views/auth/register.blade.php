@@ -21,7 +21,7 @@
       @csrf
       <!-- Form Heading -->
       <div class="form-heading">
-      <h1>Fiók Létrehozás</h1>
+      <h1>Fiók létrehozása</h1>
       <p>Kérjük, töltse ki az összes szükséges mezőt a fiók létrehozásához!</p>
       </div>
       <!-- Input Wrap -->
@@ -47,7 +47,7 @@
       <div class="input">
         <input type="password" id="confirmPassword" name="password_confirmation" placeholder=" " />
         <div class="label">
-        <label for="confirmPassword">Jelszó Megerősítése*</label>
+        <label for="confirmPassword">Jelszó megerősítése*</label>
         </div>
       </div>
       <p class="fhuj">Van már fiókod? <a class="podi" href="/login">Bejelentkezés</a>!</p>
