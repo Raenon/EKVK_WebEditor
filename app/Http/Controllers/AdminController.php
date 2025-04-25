@@ -17,10 +17,4 @@ class AdminController extends Controller
 
         return view("admin.index", ["users" => $users, "companies" => $companies, "projects" => $projects]);
     }
-
-    public function restoreUser(Users $user){
-        /* $user =  Users::withTrashed()->findOrFail($id); */
-        $user->restore();
-        return back();
-    }
 }
