@@ -55,7 +55,6 @@ Route::get('/editor', function () {
 
 Route::get('/admin', [AdminController::class, "index"])->name('admin');
 
-
 Route::resource('/admin/user', UsersController::class);
 
 Route::resource('/admin/company', CompaniesController::class);
