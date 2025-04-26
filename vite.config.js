@@ -9,6 +9,8 @@ export default defineConfig({
                 'resources/css/register.css',
                 'resources/js/app.js',
                 'resources/css/admin.css',
+                'resources/js/editor.js',
+                'resources/css/editor.css',
             ],
             refresh: true,
         }),
