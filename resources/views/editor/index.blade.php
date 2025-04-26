@@ -23,16 +23,10 @@
 <script src="https://cdn.ckbox.io/ckbox/2.6.1/ckbox.js" crossorigin></script>
 
 <script>
-    function Check(){
-        const editors = document.querySelector('ck-rounded-corners');
-        if (editors.Count === 2) {
-            editors[1].InnerHtml = "";
-        }
-    }
     function Save(){
         console.log('====================================');
         console.log("Fasza");
         console.log('====================================');
     }
-    Check();
+    
 </script>
