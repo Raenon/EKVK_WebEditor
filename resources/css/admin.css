@@ -1,11 +1,19 @@
-.random-container {
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+    background-color: #e2e7ec;
+}
+
+.settings-container {
     display: flex;
     flex-wrap: wrap;
     gap: 20px;
     padding: 20px;
 }
 
-.random-left-panel {
+.left-panel {
     flex: 1;
     min-width: 220px;
     max-width: 300px;
@@ -14,8 +22,8 @@
     gap: 10px;
 }
 
-.random-left-panel .random-option,
-.random-left-panel .random-deactive {
+.left-panel .option,
+.left-panel .deactive {
     box-shadow: 0 0 10px rgba(24, 37, 53, 0.5);
     padding: 10px 12px;
     border-radius: 5px;
@@ -24,25 +32,25 @@
     transition: background-color 0.3s, color 0.3s;
 }
 
-.random-left-panel .random-option:hover,
-.random-left-panel .random-option.random-active {
+.left-panel .option:hover,
+.left-panel .option.active {
     background-color: white;
     color: #182535;
     font-weight: bold;
 }
 
-.random-left-panel .random-deactive {
+.left-panel .deactive {
     background-color: #dc3545;
     color: white;
     border: none;
 }
 
-.random-left-panel .random-deactive:hover {
+.left-panel .deactive:hover {
     background-color: #741e26;
     color: #ccc;
 }
 
-.random-main-content {
+.main-content {
     flex: 3 1 600px;
     padding: 15px;
     background-color: #fff;
@@ -50,51 +58,51 @@
     overflow-x: auto;
 }
 
-.random-header {
+.header {
     text-align: center;
     margin-bottom: 20px;
     font-size: 16px;
     color: #2c3e50;
 }
 
-.random-table-container table {
+.table-container table {
     width: 100%;
     border-collapse: collapse;
     min-width: 600px;
 }
 
-.random-table-container th,
-.random-table-container td {
+.table-container th,
+.table-container td {
     border: 1px solid #ccc;
     padding: 10px;
     text-align: left;
 }
 
-.random-btnedit,
-.random-btncreate {
+.btnedit,
+.btncreate {
     padding: 6px 12px;
     border-radius: 4px;
     border: none;
     cursor: pointer;
 }
 
-.random-btnedit {
+.btnedit {
     background-color: #182535;
     color: white;
 }
 
-.random-btnedit:hover {
+.btnedit:hover {
     background-color: #2c3e50;
     color: #ccc;
 }
 
-.random-btncreate {
+.btncreate {
     background-color: #269d2c;
     color: whitesmoke;
     box-shadow: 0 0 10px rgba(1, 72, 11, 0.644);
 }
 
-.random-btncreate:hover {
+.btncreate:hover {
     background-color: #237a27;
     color: #ccc;
 }
@@ -105,31 +113,31 @@
 }
 
 @media (max-width: 768px) {
-    .random-container {
+    .settings-container {
         flex-direction: column;
     }
 
-    .random-left-panel {
+    .left-panel {
         flex-direction: row;
         flex-wrap: wrap;
         max-width: 100%;
     }
 
-    .random-left-panel .random-option {
+    .left-panel .option {
         flex: 1 1 45%;
         text-align: center;
     }
 
-    .random-main-content {
+    .main-content {
         padding: 10px;
     }
 
-    .random-table-container table {
+    .table-container table {
         font-size: 14px;
     }
 
-    .random-btnedit {
+    .btnedit {
         padding: 4px 8px;
         font-size: 12px;
     }
-} 
+}
