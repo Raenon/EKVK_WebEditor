@@ -1,0 +1,44 @@
+/* Form styling */
+.card {
+    margin-top: 35%;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.);
+    background-color: #f8f9fa;
+    padding: 30px;
+}
+
+.card-body {
+    padding: 20px;
+}
+
+input.form-control {
+    border-radius: 10px;
+    padding: 15px;
+    font-size: 16px;
+    border: 1px solid #ddd;
+    margin-bottom: 15px;
+}
+
+button.btn-next {
+    padding: 10px 20px;
+    border-radius: 25px;
+    font-size: 16px;
+    background-color: #ff9d0078;
+    border: none;
+    color: white;
+    transition: background-color 0.3s ease;
+}
+
+button.btn-next:hover {
+    background-color: #e67e22;
+}
+
+label {
+    font-weight: bold;
+    color: #333;
+    font-size: 14px;
+}
+
+.text-center {
+    margin-top: 20px;
+}

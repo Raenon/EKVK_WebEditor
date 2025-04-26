@@ -19,7 +19,7 @@ class ProjectsFactory extends Factory
         return [
             'user_id' => fake()->numberBetween(1,16),
             'project_name' => fake()->word(),
-            'project_description' => fake()->paragraph(),
+            'project_description' => fake()->sentence(),
             'project_data' => null
         ];
     }

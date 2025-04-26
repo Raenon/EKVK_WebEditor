@@ -16,7 +16,12 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 
-    @vite(["resources/css/app.css", "resources/js/app.js", "resources/css/admin.css", "resources/css/company.css", "resources/css/account.css"])
+    @vite(["resources/css/app.css", "resources/js/app.js", 
+    "resources/css/admin.css", "resources/css/company.css", 
+    "resources/css/account.css", "resources/css/welcome.css", 
+    "resources/css/about.css", "resources/css/download.css",
+    "resources/css/edit.css", "resources/css/create.css"])
+
     @yield('vite')
     <title>EKVK</title>
 </head>
@@ -57,7 +62,7 @@
                         </li>
                         @if(Auth::check())
                             @if (Auth::user()->role == 1)
-                            <hr>
+                                <hr>
                                 <li class="nav-item">
                                     <a class="nav-link active" aria-current="page" href="{{route('admin')}}">
                                         <i class="bi bi-grid-1x2"></i> Admin Dashboard </a>

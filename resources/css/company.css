@@ -57,7 +57,7 @@ body {
     font-style: italic;
 }
 
-@media (max-width: 768px) {
+/* @media (max-width: 768px) {
     .settings-container {
         flex-direction: column;
     }
@@ -85,10 +85,11 @@ body {
         padding: 4px 8px;
         font-size: 12px;
     }
-}
+} */
 
 .save {
-    margin-left: 1449px;
+    width: 100px;
+    
     margin-top: 1%;
     padding: 10px;
     background-color: #dc3545;
@@ -96,4 +97,5 @@ body {
     border: none;
     cursor: pointer;
     border-radius: 4px;
+    position: relative;
 }

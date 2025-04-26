@@ -1,0 +1,128 @@
+/* Basic styles */
+header {
+    background-color: white;
+    color: #182535;
+    padding: 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+header h1 {
+    margin: 0;
+    font-size: 1.5rem;
+}
+
+.toolbar button {
+    margin-right: 10px;
+    padding: 0.5rem 1rem;
+    font-size: 1rem;
+    cursor: pointer;
+}
+
+main {
+    padding: 2rem;
+    max-width: 800px;
+    margin: auto;
+}
+
+.project-list {
+    background-color: white;
+    padding: 1rem;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.project-item {
+    padding: 0.75rem;
+    border-bottom: 1px solid #ddd;
+    cursor: pointer;
+}
+
+.project-item:hover {
+    background-color: #eef;
+}
+
+.file-input {
+    display: none;
+}
+
+.btn-click {
+    background-color: #182535;
+    color: #f5f7fa;
+    padding: 12px 24px;
+    text-decoration: none;
+    border-radius: 5px;
+    width: 100px;
+    height: 40px;
+    text-align: center;
+}
+
+/* Responsive styles */
+/* @media (max-width: 768px) {
+    header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    header h1 {
+        font-size: 1.3rem;
+    }
+
+    .toolbar {
+        margin-top: 1rem;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .toolbar button {
+        margin: 0.5rem 0;
+        width: 100%;
+        padding: 8px 20px;
+        width: 100px;
+        height: 40px;
+        text-align: center;
+
+    }
+
+    main {
+        padding: 1rem;
+        max-width: 100%;
+    }
+
+    .project-list {
+        padding: 1rem;
+    }
+
+    .project-item {
+        font-size: 0.9rem;
+        padding: 0.5rem;
+    }
+}
+
+@media (max-width: 480px) {
+    header h1 {
+        font-size: 1.2rem;
+    }
+
+    .toolbar button {
+        font-size: 0.9rem;
+        padding: 8px 20px;
+        width: 100px;
+        height: 40px;
+        text-align: center;
+    }
+
+    .project-item {
+        font-size: 0.85rem;
+    }
+
+    .btn-click {
+        font-size: 0.9rem;
+        padding: 8px 20px;
+        width: 100px;
+        height: 40px;
+        text-align: center;
+    }
+} */

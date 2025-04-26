@@ -1,0 +1,220 @@
+diff a/resources/css/app.css b/resources/css/app.css	(rejected hunks)
+@@ -358,207 +358,216 @@
+   padding: 10px;
+   border-radius: 15px;
+ }
+ 
+ .left-panel {
+   flex: 1;
+   min-width: 320px;
+   max-width: 550px;
+   display: flex;
+   flex-direction: column;
+   gap: 10px;
+ }
+ 
+ .left-panel .option {
+   box-shadow: 0 0 10px rgb(24, 37, 53, 0.5);
+   margin-bottom: 15px;
+   cursor: pointer;
+   color: rgb(24, 37, 53);
+   font-size: 15px;
+   padding: 10px 12px;
+   border-radius: 5px;
+   transition: background-color 0.3s, color 0.3s;
+ }
+ 
+ .left-panel .option:hover {
+   background-color: white;
+   color: #182535;
+ }
+ 
+ .left-panel .option.active {
+   background-color: white;
+   color: #182535;
+   font-weight: bold;
+ }
+ 
+ .main-content {
+   flex: 3 1 600px;
+   padding: 15px;
+   background-color: #fff;
+   border-radius: 8px;
+   overflow-x: auto;
+ }
+ 
+ .header {
+   text-align: center;
+   margin-bottom: 20px;
+   font-size: 16px;
+   color: #2c3e50;
+ }
+ 
+ .right-panel {
+   background-color: #ffffff;
+   padding: 20px;
+   border-radius: 8px;
+   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+   font-size: 15px;
+ }
+ 
+ .option {
+   cursor: pointer;
+   padding: 10px;
+   border-bottom: 1px solid #ccc;
+ }
+ 
+ /* Reszponzív design */
+ @media screen and (max-width: 768px) {
+   .left-panel {
+     width: 180px;
+   }
+ 
+   .main-content {
+     margin-left: 180px;
+     padding: 20px;
+   }
+ 
+   .left-panel .option {
+     font-size: 14px;
+     padding: 8px;
+   }
+ 
+   .right-panel {
+     font-size: 14px;
+     padding: 15px;
+   }
+ 
+   .header {
+     font-size: 14px;
+   }
+ }
+ 
+ .deactive {
+   box-shadow: 0 0 10px rgba(73, 1, 1, 0.5);
+   background-color: red;
+   margin-bottom: 15px;
+   cursor: pointer;
+   color: rgb(24, 37, 53);
+   font-size: 15px;
+   padding: 10px 12px;
+   border-radius: 5px;
+   transition: background-color 0.3s, color 0.3s;
+-} 
++}
+ 
+ .left-panel .deactive {
+   padding: 10px;
+   background-color: #dc3545;
+   color: white;
+   border: none;
+   cursor: pointer;
+   border-radius: 4px;
+ }
+ 
+ .left-panel .deactive:hover {
+   background-color: #741e26;
+   color: #ccc;
+ }
+ 
+ .main-content {
+   margin-left: 2px;
+   width: 318px;
+   height: 600px;
+   flex: 1 300px;
+   padding: 15px;
+   background-color: #fff;
+   border-radius: 8px;
+   overflow-x: auto;
+ }
+ 
+ .main-content .header {
+   margin-bottom: 15px;
+ }
+ 
+ .main-content table {
+   width: 100%;
+   border-collapse: collapse;
+   min-width: 600px;
+ }
+ 
+ .main-content th,
+ .main-content td {
+   border: 1px solid #ccc;
+   padding: 10px;
+   text-align: left;
+ }
+ 
+ .btnedit {
+   padding: 6px 12px;
+   background-color: #182535;
+   color: white;
+   border: none;
+   border-radius: 4px;
+   cursor: pointer;
+ }
+ 
+ .btnedit:hover {
+   background-color: #2c3e50;
+   color: #ccc;
+ }
+ 
+ #mainContent {
+   margin-top: 10px;
+   font-style: italic;
+ }
+ 
+ /* Responsive Design */
+ @media (max-width: 768px) {
+   .settings-container {
+     flex-direction: column;
+   }
+ 
+   .left-panel {
+     flex-direction: row;
+     flex-wrap: wrap;
+     max-width: 100%;
+     justify-content: flex-start;
+   }
+ 
+   .left-panel .option {
+     flex: 1 1 40%;
+     text-align: center;
+   }
+ 
+   .main-content table {
+     font-size: 14px;
+   }
+ 
+   .btnedit {
+     padding: 4px 8px;
+     font-size: 12px;
+   }
+ }
+ 
+ /* Button Styling */
+ .btncreate {
+   width: 100px;
+   height: 30px;
+   border-radius: 5px;
+   color: whitesmoke;
+   background-color: #269d2c;
+   border: none;
+   cursor: pointer;
+   box-shadow: 0 0 10px rgba(1, 72, 11, 0.644);
+ }
+ 
+ .btncreate:hover {
+   background-color: #237a27;
+   color: #ccc;
+ }
++
++.next {
++  padding: 6px 12px;
++  background-color: #182535;
++  color: white;
++  border: none;
++  border-radius: 4px;
++  cursor: pointer;
++}
+\ No newline at end of file

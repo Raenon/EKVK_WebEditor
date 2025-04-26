@@ -47,12 +47,10 @@
                         <tr>
                             <td>Felhasználónév</td>
                             <td><input type="text" placeholder="{{ Auth::user()->username }}"></td>
-                            <td><button class="btnedit">Módosítás</button></td>
                         </tr>
                         <tr>
                             <td>Email cím</td>
                             <td><input type="text" placeholder="{{ Auth::user()->email }}"></td>
-                            <td><button class="btnedit">Módosítás</button></td>
                         </tr>
                         <tr>
                             <td>Jelszó</td>
@@ -60,7 +58,6 @@
 
                                str_repeat('*',strlen(Auth::user()->password))
                             }}"></td>
-                            <td><button class="btnedit">Módosítás</button></td>
                         </tr>
                     </tbody>
                 </table>
@@ -80,14 +77,12 @@
                             <td>A vállalat hivatalos neve</td>
                             <td>-</td>
                             <td><input type="text" placeholder="Cég név"></td>
-                            <td><button class="btnedit">Módosítás</button></td>
                         </tr>
                         <tr>
                             <td>Adószám</td>
                             <td>A cég adószáma</td>
                             <td>-</td>
                             <td><input type="text" placeholder="Cég Adószám"></td>
-                            <td><button class="btnedit">Módosítás</button></td>
                         </tr>
                     </tbody>
                 </table>
