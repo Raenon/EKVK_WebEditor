@@ -537,8 +537,7 @@ footer {
   }
 
   .main-content table {
-    font-size: 14px;
-  }
+    font-size: 14px; }
 
   .btnedit {
     padding: 4px 8px;
@@ -549,8 +548,8 @@ footer {
 /* Button Styling */
 .btncreate {
   width: 100px;
-  height: 30px;
-  border-radius: 5px;
+  height: 40px;
+  padding: 30px;
   color: whitesmoke;
   background-color: #269d2c;
   border: none;

@@ -13,8 +13,7 @@ class CompaniesController extends Controller
      */
     public function index()
     {
-        $companies = Companies::all()->sortBy("id");
-        return view("admin.index", ["companies" => $companies]);
+        //
     }
 
     /**
@@ -32,8 +31,6 @@ class CompaniesController extends Controller
     {
         $company = new Companies();
         $company->company_name = $request->company_name;
-        $company->company_email = $request->company_email;
-        $company->tax_num = $request->tax_num;
         $company->save();
     }
 

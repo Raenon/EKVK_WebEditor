@@ -15,6 +15,19 @@ class Users extends Authenticatable
     use Notifiable;
     use SoftDeletes;
 
-    protected $fillable = ["username", "email", "password", "role"];
+    protected $fillable = ["username", "email", "password"];
     protected $hidden = ["password"];
+
+    public function roles()
+    {
+        return $this->belongsToMany(Role::class,'users_roles','user_id','role_id');
+    }
+
+    public function companies(){
+        return $this->belongsToMany(Companies::class,'users_companies_connection','user_id','company_id');
+    }
+
+    public function hasRole($role){
+        return $this->roles->contains('id',$role);
+    }
 }

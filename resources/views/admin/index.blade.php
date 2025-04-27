@@ -29,8 +29,8 @@
                             <th>id</th>
                             <th>Username</th>
                             <th>email</th>
-                            <th>Password</th>
                             <th>role</th>
+                            <th>group(s)</th>
                             <th>created_at</th>
                             <th>updated_at</th>
 
@@ -43,21 +43,33 @@
                               <td>{{ $user->id }}</td>
                               <td>{{ $user->username }}</td>
                               <td>{{ $user->email }}</td>
-                              <td>{{ str_repeat('*',strlen($user->password)) }}</td>
-                            <td>{{ $user->role }}</td>
+                              <td>
+                                @foreach ($user->roles as $role )
+                                {{ $role->role_name }}
+                                @endforeach
+                                </td>
+                              <td>
+                                @foreach ($user->companies as $company )
+                                @if($user->companies)
+                                    {{ $company->company_name }},
+                                @endif
+
+                                @endforeach
+                                </td>
+
                             <td>{{$user->created_at}}</td>
                             <td>{{$user->updated_at}}</td>
 
                             <td>
                                 <form action="{{ route('user.edit', $user) }}" method="GET">
                                     <button
-                                        class="btn btn-warning"><i class="bi bi-pencil-square"></i></button></form>
+                                        class="btn btn-warning ms-4"><i class="bi bi-pencil-square"></i></button></form>
                             </td>
                             <td>
                                 <form action="{{ route('user.destroy', $user) }} " method="POST">
                                     @csrf
                                     @method('DELETE')
-                                    <button class="btn btn-danger"><i class="bi bi-trash3"></i></button>
+                                    <button class="btn btn-danger ms-4"><i class="bi bi-trash3"></i></button>
                                 </form>
                             </td>
 
@@ -75,8 +87,6 @@
                     <thead>
                         <th>id</th>
                         <th>company name</th>
-                        <th>company_email</th>
-                        <th>tax_num</th>
                         <th>created_at</th>
                         <th>updated_at</th>
 
@@ -87,8 +97,6 @@
                               <tr>
                                    <td>{{ $company->id }}</td>
                                    <td>{{ $company->company_name }}</td>
-                                   <td>{{ $company->company_email }}</td>
-                                   <td>{{ $company->tax_num }}</td>
                                  <td>{{$company->created_at}}</td>
                                  <td>{{$company->updated_at}}</td>
 
@@ -116,40 +124,46 @@
             <div class="table-container" id="projectTable" style="display: none;">
                 <table>
                     <thead>
-                        <tr>
-                            <th colspan="5">Project</th>
-                        </tr>
+                        <th>id</th>
+                        <th>username</th>
+                        <th>project_name</th>
+                        <th>project_description</th>
+                        <th>created_at</th>
+                        <th>updated_at</th>
+
                     </thead>
                     <tbody>
-                        <tr>
-                            <td>Új cég neve</td>
-                            <td>Adja meg az új cég nevét</td>
-                            <td>-</td>
-                            <td><input type="text" placeholder="Pl: Új Cég Kft."></td>
-                            <td></td>
-                        </tr>
-                        <tr>
-                            <td>Email</td>
-                            <td>Kapcsolattartó email cím</td>
-                            <td>-</td>
-                            <td><input type="email" placeholder="email@example.com"></td>
-                            <td></td>
-                        </tr>
-                        <tr>
-                            <td>Telefonszám</td>
-                            <td>Kapcsolattartó telefonszáma</td>
-                            <td>-</td>
-                            <td><input type="text" placeholder="+36..."></td>
-                            <td></td>
-                        </tr>
-                        <tr>
-                            <td>Cím</td>
-                            <td>Székhely vagy telephely</td>
-                            <td>-</td>
-                            <td><input type="text" placeholder="Cím megadása"></td>
-                            <td></td>
-                        </tr>
-                    </tbody>
+                        @foreach($projects as $project)
+                        @if ($project->deleted_at == null)
+                              <tr>
+                                   <td>{{ $project->id }}</td>
+                                   @foreach ($users as $user)
+                                     @if ($user->id == $project->user_id)
+                                        <td>{{$user->username}}</td>
+                                    @endif
+                                   @endforeach
+                                   <td>{{ $project->project_name }}</td>
+                                   <td>{{ $project->project_description }}</td>
+                                 <td>{{$project->created_at}}</td>
+                                 <td>{{$project->updated_at}}</td>
+
+                                 <td>
+                                     <form action="{{ route('project.edit', $project) }}" method="GET">
+                                         <button
+                                             class="btn btn-warning"><i class="bi bi-pencil-square"></i></button></form>
+                                 </td>
+                                 <td>
+                                     <form action="{{ route('project.destroy', $project) }}" method="POST">
+                                         @csrf
+                                         @method('DELETE')
+                                         <button class="btn btn-danger"><i class="bi bi-trash3"></i></button>
+                                     </form>
+                                 </td>
+
+                              </tr>
+                              @endif
+                        @endforeach
+                        </tbody>
                 </table>
             </div>
 
@@ -161,8 +175,8 @@
                             <th>id</th>
                             <th>Username</th>
                             <th>email</th>
-                            <th>Password</th>
                             <th>role</th>
+                            <th>group(s)</th>
                             <th>created_at</th>
                             <th>updated_at</th>
                             <th>deleted_at</th>
@@ -171,27 +185,37 @@
                    <tbody>
                    @foreach($users as $user)
                     @if ($user->deleted_at != NULL)
-
-
-
                          <tr>
-                              <td>{{ $user->id }}</td>
-                              <td>{{ $user->username }}</td>
-                              <td>{{ $user->email }}</td>
-                              <td>{{ str_repeat('*',strlen($user->password)) }}</td>
-                            <td>{{ $user->role }}</td>
-                            <td>{{$user->created_at}}</td>
-                            <td>{{$user->updated_at}}</td>
-                            <td>{{$user->deleted_at}}</td>
+                            <tr>
+                                <td>{{ $user->id }}</td>
+                                <td>{{ $user->username }}</td>
+                                <td>{{ $user->email }}</td>
+                                <td>
+                                  @foreach ($user->roles as $role )
+                                  {{ $role->role_name }}
+                                  @endforeach
+                                  </td>
+                                <td>
+                                  @foreach ($user->companies as $company )
+                                  @if($user->companies)
+                                      {{ $company->company_name }},
+                                  @else
+                                      not in a company
+                                  @endif
 
+                                  @endforeach
+                                  </td>
+
+                              <td>{{$user->created_at}}</td>
+                              <td>{{$user->updated_at}}</td>
+                              <td>{{$user->deleted_at}}</td>
                             <td>
                                 <form action="{{ route('user.restore' , $user->id) }}" method="POST">
                                     @csrf
                                     @method('PATCH')
-                                    <button class="btn btn-danger ms-1"><i class="bi bi-arrow-counterclockwise"></i>Restore</button>
+                                    <button class="btn btn-danger ms-5"><i class="bi bi-arrow-counterclockwise"></i>Restore</button>
                                 </form>
                             </td>
-
                          </tr>
                          @endif
                    @endforeach
@@ -205,8 +229,6 @@
                     <thead>
                         <th>id</th>
                         <th>company_name</th>
-                        <th>company_email</th>
-                        <th>tax_num</th>
                         <th>created_at</th>
                         <th>updated_at</th>
                         <th>deleted_at</th>
@@ -217,8 +239,6 @@
                               <tr>
                                    <td>{{ $company->id }}</td>
                                    <td>{{ $company->company_name }}</td>
-                                   <td>{{ $company->company_email }}</td>
-                                   <td>{{ $company->tax_num }}</td>
                                  <td>{{$company->created_at}}</td>
                                  <td>{{$company->updated_at}}</td>
                                  <td>{{$company->deleted_at}}</td>
@@ -237,46 +257,47 @@
                 </table>
             </div>
 
+
+            <!-- Deleted Project táblázat -->
             <div class="table-container" id="projectTrash" style="display: none;">
                 <table>
                     <thead>
-                        <tr>
-                            <th colspan="5">Project</th>
-                        </tr>
+                        <th>id</th>
+                        <th>username</th>
+                        <th>project_name</th>
+                        <th>project_description</th>
+                        <th>created_at</th>
+                        <th>updated_at</th>
+
                     </thead>
                     <tbody>
-                        <tr>
-                            <td>Új cég neve</td>
-                            <td>Adja meg az új cég nevét</td>
-                            <td>-</td>
-                            <td><input type="text" placeholder="Pl: Új Cég Kft."></td>
-                            <td></td>
-                        </tr>
-                        <tr>
-                            <td>Email</td>
-                            <td>Kapcsolattartó email cím</td>
-                            <td>-</td>
-                            <td><input type="email" placeholder="email@example.com"></td>
-                            <td></td>
-                        </tr>
-                        <tr>
-                            <td>Telefonszám</td>
-                            <td>Kapcsolattartó telefonszáma</td>
-                            <td>-</td>
-                            <td><input type="text" placeholder="+36..."></td>
-                            <td></td>
-                        </tr>
-                        <tr>
-                            <td>Cím</td>
-                            <td>Székhely vagy telephely</td>
-                            <td>-</td>
-                            <td><input type="text" placeholder="Cím megadása"></td>
-                            <td></td>
-                        </tr>
-                    </tbody>
+                        @foreach($projects as $project)
+                        @if ($project->deleted_at != null)
+                              <tr>
+                                   <td>{{ $project->id }}</td>
+                                   @foreach ($users as $user)
+                                     @if ($user->id == $project->user_id)
+                                        <td>{{$user->username}}</td>
+                                    @endif
+                                   @endforeach
+                                   <td>{{ $project->project_name }}</td>
+                                   <td>{{ $project->project_description }}</td>
+                                 <td>{{$project->created_at}}</td>
+                                 <td>{{$project->updated_at}}</td>
+                                 <td>
+                                     <form action="{{ route('project.restore', $project->id) }}" method="POST">
+                                         @csrf
+                                         @method('PATCH')
+                                         <button class="btn btn-danger ms-3"><i class="bi bi-arrow-counterclockwise"></i>Restore</button>
+                                     </form>
+                                 </td>
+
+                              </tr>
+                              @endif
+                        @endforeach
+                        </tbody>
                 </table>
             </div>
-
         </div>
     </div>
 

@@ -13,8 +13,7 @@ class ProjectsController extends Controller
      */
     public function index()
     {
-        $projects = Projects::all()->sortBy("id");
-        return view("admin.index", ["projects" => $projects]);
+       //
     }
 
     /**
@@ -30,13 +29,19 @@ class ProjectsController extends Controller
      */
     public function store(StoreProjectsRequest $request)
     {
-        //
+        $project = new Projects();
+        /* $project->user_id = $request->user_id; */
+        $project->project_name = $request->project_name;
+        $project->project_description = $request->project_description;
+        $project->data = null;
+        $project->save();
+        return back();
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(Projects $projects)
+    public function show(Projects $project)
     {
         //
     }
@@ -44,24 +49,35 @@ class ProjectsController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Projects $projects)
+    public function edit(Projects $project)
     {
-        //
+        return view('admin.user.edit',[
+            'project' => $project
+        ]);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateProjectsRequest $request, Projects $projects)
+    public function update(UpdateProjectsRequest $request, Projects $project)
     {
-        //
+        $project->update($request->all());
+        return redirect()->route("admin");
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Projects $projects)
+    public function destroy(Projects $project)
     {
-        //
+        $project->delete();
+        return back()->with("success", $project->username . " törlése megtörtént");
+    }
+
+    public function restore($id){
+
+        $project = Projects::withTrashed()->find($id);
+        $project->restore();
+        return back();
     }
 }

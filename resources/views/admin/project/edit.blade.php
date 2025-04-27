@@ -4,7 +4,7 @@
     <div class="row">
         <div class="card">
             <div class="card-body">
-                <h4 class="card-title">Update Company: <strong>{{$company->username}}</strong></h4>
+                <h4 class="card-title">Update project: <strong>{{$project->project_name}}</strong></h4>
                 <p class="card-text">Fields marked with <strong>*</strong> are mandatory!</p>
                 <br>
 
@@ -14,10 +14,14 @@
                     @endforeach
                 </ol>
 
-                <form action="{{route("company.update", $company->id)}}" method="POST">
+                <form action="{{route("project.update", $project)}}" method="POST">
                     @csrf
-                    <label for="">Company Name:</label>
-                    <input value="{{$company->company_name}}" type="text" class="form-control mb-3" placeholder="username" name="username" >
+                    @method('PUT')
+                    <label for="">Project name:</label>
+                    <input value="{{$project->project_name}}" type="text" class="form-control mb-3" placeholder="username" name="username" >
+                    <label for="">Project description:</label>
+                    <input value="{{$project->project_description}}" type="text" class="form-control mb-3" placeholder="email" name="email">
+
                     <div class="text-center">
                         <button class="btn btn-outline-warning">Update</button>
                     </div>

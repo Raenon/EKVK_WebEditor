@@ -2,6 +2,8 @@
 
 
 @section('content')
+
+
 @if(Auth::check())
     <div class="settings-container">
         <!-- Bal oldali menü -->
@@ -10,18 +12,21 @@
                 onclick="changeContent(this, ''); showAccountSettings()">Saját fiók
             </div>
 
-             @if (Auth::user()->role == "3")
-                <div class="option" onclick="changeContent(this, ''); showCompanySettings()">Cég Beállítás
-                </div>
+            @if (Auth::user()->hasRole(3)|| Auth::user()->hasRole(1))
+
+                <button class="option" onclick="changeContent(this, ''); showSelectCompany()">Csapat Beállítás </button>
 
             @endif
 
-            <div class="option" onclick="changeContent(this, ''); showCreateCompany()">Új Cég Létrehozás
+
+            <div class="option" onclick="changeContent(this, ''); showCreateCompany()">Új Csapat Létrehozás
             </div>
 
-            <form action="{{ route('user.destroy', Auth::user()) }} " method="POST" >
+
+
+            <form action="{{ route('account.deactivate', $user) }} " method="POST" >
                 @csrf
-                @method('DELETE')
+                @method('POST')
             <button class="deactive">DEAKTIVÁLÁS</button>
             </form>
         </div>
@@ -35,8 +40,11 @@
             <div id="mainContent"></div>
 
             <!-- Account Settings táblázat -->
+            <form action="{{route("account.update", $user)}}" method="POST">
+                @csrf
 
-            <div class="table-container" id="accountTableContainer">
+
+                <div class="table-container" id="accountTableContainer">
                 <table>
                     <thead>
                         <tr>
@@ -46,98 +54,74 @@
                     <tbody>
                         <tr>
                             <td>Felhasználónév</td>
-                            <td><input type="text" placeholder="{{ Auth::user()->username }}"></td>
-                            <td><button class="btnedit">Módosítás</button></td>
+                            <td><input type="text" placeholder="username"name="username" value="{{$user->username }}"></td>
                         </tr>
                         <tr>
                             <td>Email cím</td>
-                            <td><input type="text" placeholder="{{ Auth::user()->email }}"></td>
-                            <td><button class="btnedit">Módosítás</button></td>
+                            <td><input type="text" placeholder="email" value="{{ $user->email }}" name="email"></td>
                         </tr>
                         <tr>
-                            <td>Jelszó</td>
-                            <td><input type="password" placeholder="{{
+                            <td>Jelszó (hash)</td>
+                            <td><input type="password" placeholder="password" value="{{
+                               str_repeat('*',strlen($user->password))
+                            }}" name="password"></td>
 
-                               str_repeat('*',strlen(Auth::user()->password))
-                            }}"></td>
-                            <td><button class="btnedit">Módosítás</button></td>
                         </tr>
                     </tbody>
                 </table>
+                <button class="btnedit mt-3">Módosítás</button>
             </div>
+            </form>
 
-            <!-- Company Settings -->
-            <div class="table-container" id="companyTableContainer" style="display: none;">
+            {{-- Company Select table --}}
+
+            <div class="table-container" id="selectCompanyContainer" style="display: none;">
                 <table>
                     <thead>
                         <tr>
-                            <th colspan="5">Cég Beállítás</th>
+                            <th colspan="3">Select Group</th>
                         </tr>
                     </thead>
                     <tbody>
+
+                        @foreach ($user->companies as $company )
+                        @if($user->companies)
+                        <form action="{{ route('company', $company)}}" method="POST">
+                            @csrf
                         <tr>
-                            <td>Cég neve</td>
-                            <td>A vállalat hivatalos neve</td>
-                            <td>-</td>
-                            <td><input type="text" placeholder="Cég név"></td>
-                            <td><button class="btnedit">Módosítás</button></td>
+                            <td><button class="btn">{{ $company->company_name }}</button></td>
                         </tr>
-                        <tr>
-                            <td>Adószám</td>
-                            <td>A cég adószáma</td>
-                            <td>-</td>
-                            <td><input type="text" placeholder="Cég Adószám"></td>
-                            <td><button class="btnedit">Módosítás</button></td>
-                        </tr>
+                    </form>
+                        @endif
+                        @endforeach
+
                     </tbody>
                 </table>
             </div>
 
+
             <!-- Create Company táblázat -->
+             <form action="{{ route('account.storeCompany')}}" method="POST">
+                @csrf
+                @method('POST')
             <div class="table-container" id="createCompanyTableContainer" style="display: none;">
                 <table>
                     <thead>
                         <tr>
-                            <th colspan="5">Új cég létrehozás</th>
+                            <th colspan="5">Új Csapat létrehozás</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr>
-                            <td>Új cég neve</td>
-                            <td>Adja meg az új cég nevét</td>
-                            <td>-</td>
-                            <td><input type="text" placeholder="Pl: Új Cég Kft."></td>
-                            <td></td>
-                        </tr>
-                        <tr>
-                            <td>Email</td>
-                            <td>Kapcsolattartó email cím</td>
-                            <td>-</td>
-                            <td><input type="email" placeholder="email@example.com"></td>
-                            <td></td>
-                        </tr>
-                        <tr>
-                            <td>Telefonszám</td>
-                            <td>Kapcsolattartó telefonszáma</td>
-                            <td>-</td>
-                            <td><input type="text" placeholder="+36..."></td>
-                            <td></td>
-                        </tr>
-                        <tr>
-                            <td>Cím</td>
-                            <td>Székhely vagy telephely</td>
-                            <td>-</td>
-                            <td><input type="text" placeholder="Cím megadása"></td>
-                            <td></td>
-                        </tr>
-                        <tr>
-                            <td colspan="5">
-                                <button class="btncreate">Létrehozás</button>
-                            </td>
+                            <td>Új csapat neve</td>
+                            <td><input type="text" placeholder="Csapat név." name="company_name"></td>
                         </tr>
                     </tbody>
                 </table>
+                <button class="btncreate mt-3">Létrehozás</button>
             </div>
+        </form>
+
         </div>
     </div>
 
@@ -156,7 +140,7 @@
 
         function hideAllTables() {
             document.getElementById('accountTableContainer').style.display = 'none';
-            document.getElementById('companyTableContainer').style.display = 'none';
+            document.getElementById('selectCompanyContainer').style.display = 'none';
             document.getElementById('createCompanyTableContainer').style.display = 'none';
         }
 
@@ -165,9 +149,9 @@
             document.getElementById('accountTableContainer').style.display = 'block';
         }
 
-        function showCompanySettings() {
+        function showSelectCompany() {
             hideAllTables();
-            document.getElementById('companyTableContainer').style.display = 'block';
+            document.getElementById('selectCompanyContainer').style.display = 'block';
         }
 
         function showCreateCompany() {
