@@ -30,10 +30,9 @@ body {
 .table-container th,
 .table-container td {
     border: 1px solid #ccc;
-    padding: 10px;
-    text-align: left;
-}
 
+    text-align: center;
+}
 .btnedit,
 .btncreate {
     padding: 6px 12px;

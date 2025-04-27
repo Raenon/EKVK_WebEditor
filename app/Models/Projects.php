@@ -12,6 +12,13 @@ class Projects extends Model
     use HasFactory;
     use SoftDeletes;
 
-    protected $fillable = ["company_name", "company_email", "tax_num"];
+    protected $fillable = ["project_name", "project_description", "project_data"];
+
+    public function companies()
+    {
+        return $this->belongsToMany(Companies::class,'project_company','project_id','company_id');
+    }
+
+
 }
 

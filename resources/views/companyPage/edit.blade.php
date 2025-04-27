@@ -8,10 +8,10 @@
                 <p class="card-text">Fields marked with <strong>*</strong> are mandatory!</p>
                 <br>
 
-                <form action="{{route("company.update", $company->id)}}" method="POST">
+                <form action="{{route("companyPage.update", $company->id)}}" method="POST">
                     @csrf
                     <label for="">Company Name:</label>
-                    <input value="{{$company->company_name}}" type="text" class="form-control mb-3" placeholder="username" name="username" >
+                    <input value="{{$company->company_name}}" type="text" class="form-control mb-3" placeholder="company_name" name="company_name" >
                     <div class="text-center">
                         <button class="btn btn-outline-warning">Update</button>
                     </div>

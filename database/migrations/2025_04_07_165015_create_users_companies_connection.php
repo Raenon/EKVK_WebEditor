@@ -13,8 +13,8 @@ return new class extends Migration
     {
         Schema::create('users_companies_connection', function (Blueprint $table) {
             $table->foreignId('user_id')->constrained('users')->cascadeOnDelete();
-            $table->foreignId('company_id')->unique()->constrained('companies')->cascadeOnDelete();
-            $table->timestamps();
+            $table->foreignId('company_id')->nullable() ->constrained('companies')->cascadeOnDelete();
+            $table->boolean('company_admin');
         });
     }
 

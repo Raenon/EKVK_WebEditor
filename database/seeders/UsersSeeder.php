@@ -20,8 +20,7 @@ class UsersSeeder extends Seeder
         Users::factory()->create([
             'username' => 'Admin',
             'email' => 'admin@email.com',
-            'password' => Hash::make('admin'),
-            'role' => 1
+            'password' => Hash::make('admin')
         ]);
         Users::factory(15)->create();
 

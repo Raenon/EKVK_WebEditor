@@ -18,10 +18,9 @@ class UsersFactory extends Factory
     public function definition(): array
     {
         return [
-            'username' => fake()->name(),
-            'email' => fake()->email(),
+            'username' => fake()->unique()->name(),
+            'email' => fake()->unique->email(),
             'password' => Hash::make(fake()->word()),
-            'role' =>fake()->numberBetween(2,3)
         ];
     }
 }

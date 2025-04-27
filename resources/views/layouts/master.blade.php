@@ -35,7 +35,7 @@
 
     <nav class="navbar navbar-dark" data-bs-theme="dark">
         <div class="container-fluid">
-            <a class="navbar-brand" href="#">
+            <a class="navbar-brand" href="{{ route('welcome') }}">
                 <i class="bi bi-moon-stars"></i>
                 EKVK</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar"
@@ -66,7 +66,8 @@
                                     class="bi bi-arrow-down-circle"></i> Letöltés</a>
                         </li>
                         @if(Auth::check())
-                            @if (Auth::user()->role == 1)
+                            @if (Auth::user()->hasRole(1))
+
                             <hr>
                                 <li class="nav-item">
                                     <a class="nav-link active" aria-current="page" href="{{route('admin')}}">
@@ -98,16 +99,13 @@
         </div>
     </nav>
 
+
     <main>
         @yield('content')
     </main>
-    {{-- <footer>
-        <div class="containerthird">
-            <p>&copy; 2025 Könyvelő Iroda. Minden jog fenntartva.</p>
-        </div>
-    </footer> --}}
+
     <footer class="p-6 mt-12">
-        <p>&copy; 2025 EKVK Iroda. Minden jog fenntartva.</p>
+        <p>&copy; 2025 EKVK csapat. Minden jog fenntartva.</p>
     </footer>
 </body>
 

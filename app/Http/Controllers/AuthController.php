@@ -4,7 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
-use  App\Models\Users;
+use App\Models\Users;
+use App\Models\UserRole;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rules\Password;
 
@@ -54,9 +55,14 @@ class AuthController extends Controller
         $Users-> username = $request->username;
         $Users-> email = $request->email;
         $Users-> password = Hash::make($request->password);
-        $Users-> role = 2;
         $Users->save();
-        return view('welcome')->with("message" , "Sikeres regisztráció");
+
+        UserRole::create([
+            'user_id' => Users::orderBy('created_at','desc')->first()->id,
+            'role_id' => 2,
+        ]);
+
+        return view('welcome')->with("alert" , "Sikeres regisztráció");
 
     }
 
