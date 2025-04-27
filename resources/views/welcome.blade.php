@@ -3,14 +3,11 @@
 @section('content')
   <!-- Videós háttér szekció -->
   <section class="video-background">
+    <div class="video">
     <video autoplay muted loop id="bg-video">
-    <source src="{{ asset('./storage/img/video4.mp4') }}" type="video/mp4">
-    Your browser does not support the video tag.
+      <source src="{{ asset('storage/img/video4.mp4') }}" type="video/mp4">
+      Your browser does not support the video tag.
     </video>
-    <div class="content">
-    <h2>Professzionális szövegszerkesztés</h2>
-    <p>Bízza ránk a szavakat, hogy üzenete tisztán és hatásosan célba érjen.</p>
-    <a href="/about" class="btn">Lépjen kapcsolatba velünk</a>
     </div>
   </section>
 
