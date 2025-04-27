@@ -227,14 +227,14 @@ hr {
 
 .video-background {
   position: relative;
-  width: 2056px;
+  width: 1200px;
   height: 50vh;
   overflow: hidden;
   display: flex;
   justify-content: center;
   align-items: center;
-  right: 100%;
-  top: -32px;
+  right: 100% ;
+  top: -32;
 }
 
 #bg-video {
