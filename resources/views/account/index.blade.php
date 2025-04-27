@@ -64,11 +64,7 @@
                                 </tr>
                                 <tr>
                                     <td>Jelszó (hash)</td>
-                                    <td><input type="password" placeholder="password" value="{{
-                str_repeat('*', strlen($user->password))
-                                                                                                            }}"
-                                            name="password"></td>
-
+                                    <td><input type="password" placeholder="password" value="{{$user->password }} "  name="password"></td>
                                 </tr>
                             </tbody>
                         </table>
