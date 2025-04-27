@@ -12,7 +12,7 @@
         crossorigin="anonymous"></script>
 
     {{-- editor --}}
-    
+
     <link rel="stylesheet" href="https://cdn.ckeditor.com/ckeditor5/45.0.0/ckeditor5.css" crossorigin>
     <link rel="stylesheet" href="https://cdn.ckeditor.com/ckeditor5-premium-features/45.0.0/ckeditor5-premium-features.css" crossorigin>
 
@@ -23,7 +23,12 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 
 <<<<<<< HEAD
-    @vite(["resources/css/app.css", "resources/js/app.js", "resources/css/admin.css", "resources/css/company.css"])
+    @vite(["resources/css/app.css", "resources/js/app.js",
+    "resources/css/admin.css", "resources/css/company.css",
+    "resources/css/account.css", "resources/css/welcome.css",
+    "resources/css/about.css", "resources/css/download.css",
+    "resources/css/edit.css", "resources/css/create.css"])
+
 =======
     @vite(["resources/css/app.css", "resources/js/app.js", "resources/css/admin.css", "resources/js/editor.js", "resources/css/editor.css",])
 >>>>>>> Patrik
@@ -69,6 +74,8 @@
                             @if (Auth::user()->hasRole(1))
 
                             <hr>
+                            @if (Auth::user()->role == 1)
+                                <hr>
                                 <li class="nav-item">
                                     <a class="nav-link active" aria-current="page" href="{{route('admin')}}">
                                         <i class="bi bi-grid-1x2"></i> Admin Dashboard </a>

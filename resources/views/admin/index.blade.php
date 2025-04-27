@@ -1,27 +1,30 @@
 @extends('layouts.master')
 
 @section('content')
-    <div class="settings-container">
+    <div class="random-container">
         <!-- Sidebar -->
-        <div class="left-panel">
-            <div class="option active" onclick="changeContent(this, ''); showUser()">User</div>
-            <div class="option" onclick="changeContent(this, ''); showCompany()">Company</div>
-            <div class="option" onclick="changeContent(this, ''); showProject()">Project</div>
-            <hr class="mb-2">
-            <div class="option" onclick="changeContent(this, ''); showUserTrashed()">Deleted Users</div>
-            <div class="option" onclick="changeContent(this, ''); showCompanyTrashed()">Deleted Companies</div>
-            <div class="option" onclick="changeContent(this, ''); showProjectTrashed()">Deleted Projects</div>
+        <div class="random-left-panel">
+            <div class="random-option random-active" onclick="changeContent(this, ''); showUser()">User</div>
+            <div class="random-option" onclick="changeContent(this, ''); showCompany()">Company</div>
+            <div class="random-option" onclick="changeContent(this, ''); showProject()">Project</div>
+            <hr class="random-mb-2">
+            <div class="random-option" onclick="changeContent(this, ''); showUserTrashed()">Deleted Users</div>
+            <div class="random-option" onclick="changeContent(this, ''); showCompanyTrashed()">Deleted Companies</div>
+            <div class="random-option" onclick="changeContent(this, ''); showProjectTrashed()">Deleted Projects</div>
         </div>
 
         <!-- Main Content -->
-        <div class="main-content">
-            <div class="header" id="tableHeader">
-                <p id="tableTitle"><b>Leöntöttem almalével a billentyűzetem és ragad a törlés gomb :3</b></p>
+        <div class="random-main-content">
+            <div class="random-header" id="tableHeader">
+                <p id="tableTitle"><b></b></p>
             </div>
 
             <div id="mainContent"></div>
 
             <!-- User Table -->
+            <div class="random-table-container" id="userTable">
+                <table class="random-table-striped">
+                    <thead>
             <div class="table-container" id="userTable">
                 <table class="table-striped ">
                     <thead>
@@ -77,12 +80,16 @@
                             @endif
                         @endforeach
                     </tbody>
+                                </tr>
+                            @endif
+                        @endforeach
+                    </tbody>
                 </table>
 
             </div>
 
             <!-- Company Table -->
-            <div class="table-container" id="companyTable" style="display: none;">
+            <div class="random-table-container" id="companyTable" style="display: none;">
                 <table>
                     <thead>
                         <th>id</th>
@@ -123,13 +130,16 @@
 
                                 </tr>
                             @endif
+                                </tr>
+                            @endif
                         @endforeach
+                    </tbody>
                     </tbody>
                 </table>
             </div>
 
             <!-- Project táblázat -->
-            <div class="table-container" id="projectTable" style="display: none;">
+            <div class="random-table-container" id="projectTable" style="display: none;">
                 <table>
                     <thead>
                         <th>id</th>
@@ -176,8 +186,8 @@
             </div>
 
             <!-- Deleted users táblázat -->
-            <div class="table-container" id="userTrash" style="display: none;">
-                <table class="table-striped ">
+            <div class="random-table-container" id="userTrash" style="display: none;">
+                <table class="random-table-striped">
                     <thead>
                         <tr>
                             <th>id</th>
@@ -233,7 +243,7 @@
             </div>
 
             <!-- Deleted Company táblázat -->
-            <div class="table-container" id="companyTrash" style="display: none;">
+            <div class="random-table-container" id="companyTrash" style="display: none;">
                 <table>
                     <thead>
                         <th>id</th>
@@ -269,7 +279,7 @@
 
 
             <!-- Deleted Project táblázat -->
-            <div class="table-container" id="projectTrash" style="display: none;">
+            <div class="random-table-container" id="projectTrash" style="display: none;">
                 <table>
                     <thead>
                         <th>id</th>
@@ -315,8 +325,8 @@
     <script>
         function changeContent(element, text) {
             document.getElementById("mainContent").innerText = text;
-            document.querySelectorAll('.left-panel .option').forEach(opt => opt.classList.remove('active'));
-            element.classList.add('active');
+            document.querySelectorAll('.random-left-panel .random-option').forEach(opt => opt.classList.remove('random-active'));
+            element.classList.add('random-active');
         }
 
         function hideAllTables() {

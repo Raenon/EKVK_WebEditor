@@ -10,8 +10,16 @@ export default defineConfig({
                 'resources/js/app.js',
                 'resources/css/admin.css',
                 'resources/css/company.css',
+<<<<<<< HEAD
                 'resources/js/editor.js',
                 'resources/css/editor.css',
+=======
+                'resources/css/company.css', 
+                'resources/css/welcome.css', 
+                'resources/css/about.css', 
+                'resources/css/download.css',
+                'resources/css/edit.css',
+>>>>>>> Panka
             ],
             refresh: true,
         }),

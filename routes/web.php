@@ -40,6 +40,13 @@ Route::get('/editor', function () {
     return view('editor.index');
 })->name('editor');
 
+Route::get('/project', function () {
+    return view('project.index');
+})->name('project');
+
+Route::get('/project/create', function () {
+    return view('project.create');
+})->name('create');
 
 /* Account */
 
