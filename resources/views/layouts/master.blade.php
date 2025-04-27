@@ -22,16 +22,14 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 
-<<<<<<< HEAD
+
     @vite(["resources/css/app.css", "resources/js/app.js",
     "resources/css/admin.css", "resources/css/company.css",
     "resources/css/account.css", "resources/css/welcome.css",
     "resources/css/about.css", "resources/css/download.css",
-    "resources/css/edit.css", "resources/css/create.css"])
+    "resources/css/edit.css", "resources/css/create.css" ,
+    "resources/js/editor.js", "resources/css/editor.css",])
 
-=======
-    @vite(["resources/css/app.css", "resources/js/app.js", "resources/css/admin.css", "resources/js/editor.js", "resources/css/editor.css",])
->>>>>>> Patrik
     @yield('vite')
     <title>EKVK</title>
 </head>
@@ -72,9 +70,6 @@
                         </li>
                         @if(Auth::check())
                             @if (Auth::user()->hasRole(1))
-
-                            <hr>
-                            @if (Auth::user()->role == 1)
                                 <hr>
                                 <li class="nav-item">
                                     <a class="nav-link active" aria-current="page" href="{{route('admin')}}">
@@ -110,7 +105,7 @@
     <main>
         @yield('content')
     </main>
-
+    <br><br><br><br>
     <footer class="p-6 mt-12">
         <p>&copy; 2025 EKVK csapat. Minden jog fenntartva.</p>
     </footer>

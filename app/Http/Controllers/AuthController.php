@@ -86,12 +86,11 @@ class AuthController extends Controller
 
         $Users = Users::where('email', $request->email)->first();
 
-
         if(!$Users){
-            dd("Users hiba");
+            /* dd("Users hiba"); */
             return back()->withErrors('message', 'Nem egyezik az email vagy a jelszó');
         }
-         if (! Hash::check($request->password, $Users->password)){
+         if (!Hash::check($request->password, $Users->password)){
             return back()->withErrors('message', 'Nem egyezik az email vagy a jelszó');
         }
 

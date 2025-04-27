@@ -65,21 +65,17 @@
 
                                     <td>
                                         <form action="{{ route('user.edit', $user) }}" method="GET">
-                                            <button class="btn btn-warning ms-4"><i class="bi bi-pencil-square"></i></button>
+                                            <button class="btn btn-warning ms-3"><i class="bi bi-pencil-square"></i></button>
                                         </form>
                                     </td>
                                     <td>
                                         <form action="{{ route('user.destroy', $user) }} " method="POST">
                                             @csrf
                                             @method('DELETE')
-                                            <button class="btn btn-danger ms-4"><i class="bi bi-trash3"></i></button>
+                                            <button class="btn btn-danger ms-3"><i class="bi bi-trash3"></i></button>
                                         </form>
                                     </td>
 
-                                </tr>
-                            @endif
-                        @endforeach
-                    </tbody>
                                 </tr>
                             @endif
                         @endforeach
@@ -111,27 +107,26 @@
                                         {{ $user->username }},
                                     @endif
                                 @endforeach
-                            </td>
+                                </td>
                                     <td>{{$company->created_at}}</td>
                                     <td>{{$company->updated_at}}</td>
 
                                     <td>
                                         <form action="{{ route('company.edit', $company) }}" method="GET">
-                                            <button class="btn btn-warning"><i class="bi bi-pencil-square"></i></button>
+                                            <button class="btn btn-warning ms-3"><i class="bi bi-pencil-square"></i></button>
                                         </form>
                                     </td>
                                     <td>
                                         <form action="{{ route('company.destroy', $company) }}" method="POST">
                                             @csrf
                                             @method('DELETE')
-                                            <button class="btn btn-danger"><i class="bi bi-trash3"></i></button>
+                                            <button class="btn btn-danger ms-3"><i class="bi bi-trash3"></i></button>
                                         </form>
                                     </td>
 
                                 </tr>
                             @endif
                                 </tr>
-                            @endif
                         @endforeach
                     </tbody>
                     </tbody>
@@ -231,7 +226,7 @@
                                         <form action="{{ route('user.restore', $user->id) }}" method="POST">
                                             @csrf
                                             @method('PATCH')
-                                            <button class="btn btn-danger ms-5"><i
+                                            <button class="btn btn-danger ms-4"><i
                                                     class="bi bi-arrow-counterclockwise"></i>Restore</button>
                                         </form>
                                     </td>
@@ -265,7 +260,7 @@
                                         <form action="{{ route('company.restore', $company->id) }}" method="POST">
                                             @csrf
                                             @method('PATCH')
-                                            <button class="btn btn-danger ms-3"><i
+                                            <button class="btn btn-danger ms-4"><i
                                                     class="bi bi-arrow-counterclockwise"></i>Restore</button>
                                         </form>
                                     </td>
@@ -308,7 +303,7 @@
                                         <form action="{{ route('project.restore', $project->id) }}" method="POST">
                                             @csrf
                                             @method('PATCH')
-                                            <button class="btn btn-danger ms-3"><i
+                                            <button class="btn btn-danger ms-4"><i
                                                     class="bi bi-arrow-counterclockwise"></i>Restore</button>
                                         </form>
                                     </td>
