@@ -6,7 +6,7 @@ use App\Http\Controllers\UsersController;
 use App\Http\Controllers\CompaniesController;
 use App\Http\Controllers\ProjectsController;
 use App\Http\Controllers\AccountController;
-use App\Http\Controllers\CompanyController;
+use App\Http\Controllers\CompanyPageController;
 use App\Http\Middleware\Admin;
 use Illuminate\Support\Facades\Route;
 
@@ -45,6 +45,8 @@ Route::get('/editor', function () {
 
 Route::get('/account', [AccountController::class, "index"])->name('account');
 
+Route::post('/account/invite/{invite}', [AccountController::class, "inviteHandler"])->name('account.invite');
+
 Route::post('/account/update/{user}', [AccountController::class, "update"])->name('account.update');
 
 Route::post('/account/store/', [AccountController::class, "storeCompany"])->name('account.storeCompany');
@@ -57,7 +59,7 @@ Route::get('/admin', [AdminController::class, "index"])->name('admin');
 
 Route::resource('/admin/user', UsersController::class);
 
-Route::resource('/admin/company', CompaniesController::class);
+Route::resource('/admin/company', controller: CompaniesController::class);
 
 Route::resource('/admin/project', ProjectsController::class);
 
@@ -78,4 +80,5 @@ Route::get('/logout', [AuthController::class, "logout"])->name('logout');
 
 /* Company */
 
-Route::post('/company/{company}' , [CompanyController::class, "index"])->name('company');
+Route::get('/companypage/{company}' , [CompanyPageController::class, "index"])->name('companyPage.index');
+Route::post('/companypage/{company}/invite' , [CompanyPageController::class, "invite"])->name('companyPage.invite');

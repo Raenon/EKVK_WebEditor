@@ -27,6 +27,12 @@ class Users extends Authenticatable
         return $this->belongsToMany(Companies::class,'users_companies_connection','user_id','company_id');
     }
 
+    public function invites(){
+        return $this->belongsToMany(Companies::class,'invites','user_id','company_id');
+    }
+
+
+
     public function hasRole($role){
         return $this->roles->contains('id',$role);
     }

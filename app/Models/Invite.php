@@ -9,4 +9,8 @@ class Invite extends Model
 {
     /** @use HasFactory<\Database\Factories\InviteFactory> */
     use HasFactory;
+
+    protected $table = 'invites';
+    protected $primaryKey = 'id';
+    protected $fillable = ["company_id", "user_id", 'accepted'];
 }

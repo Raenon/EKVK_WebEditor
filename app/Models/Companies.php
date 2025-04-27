@@ -22,4 +22,9 @@ class Companies extends Model
     {
         return $this->belongsToMany(Projects::class,'project_company','company_id','project_id');
     }
+
+    public function invites(){
+        return $this->belongsToMany(Users::class,'invites','company_id','user_id');
+    }
+
 }
