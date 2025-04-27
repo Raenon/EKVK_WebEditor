@@ -86,7 +86,8 @@
                 <table>
                     <thead>
                         <th>id</th>
-                        <th>company name</th>
+                        <th>Group name</th>
+                        <th>Group members</th>
                         <th>created_at</th>
                         <th>updated_at</th>
 
@@ -97,6 +98,13 @@
                                 <tr>
                                     <td>{{ $company->id }}</td>
                                     <td>{{ $company->company_name }}</td>
+                                    <td>
+                                    @foreach ($company->users as $user)
+                                    @if($company->users)
+                                        {{ $user->username }},
+                                    @endif
+                                @endforeach
+                            </td>
                                     <td>{{$company->created_at}}</td>
                                     <td>{{$company->updated_at}}</td>
 

@@ -16,11 +16,10 @@
                     Invites
                 </div>
 
-                @if (Auth::user()->hasRole(3) || Auth::user()->hasRole(1))
                     <div class="option" onclick="changeContent(this, ''); showSelectCompany()">
                         Csapat Beállítás
                     </div>
-                @endif
+
 
                 <div class="option" onclick="changeContent(this, ''); showCreateCompany()">
                     Új Csapat Létrehozás
@@ -112,9 +111,7 @@
                                             </div>
                                         </form>
                                     </div>
-                                    @else
-
-
+                                    @break
                                 @endif
                             @endforeach
 

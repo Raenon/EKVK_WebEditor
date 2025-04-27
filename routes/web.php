@@ -81,4 +81,11 @@ Route::get('/logout', [AuthController::class, "logout"])->name('logout');
 /* Company */
 
 Route::get('/companypage/{company}' , [CompanyPageController::class, "index"])->name('companyPage.index');
+
 Route::post('/companypage/{company}/invite' , [CompanyPageController::class, "invite"])->name('companyPage.invite');
+
+Route::get('/companypage/{company}/edit' , [CompanyPageController::class, "edit"])->name('companyPage.edit');
+
+Route::post('/companypage/{company}/update' , [CompanyPageController::class, "update"])->name('companyPage.update');
+
+Route::post('/companypage/promote' , [CompanyPageController::class, "promote"])->name('companyPage.promote');
