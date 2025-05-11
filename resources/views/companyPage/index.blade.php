@@ -69,14 +69,7 @@
                     </tbody>
                 </table>
                 <div class="row ms-5">
-
-                    <form class="col-3" action="{{-- {{ route('company.edit', $company) }} --}}" method="GET">
-                        <button class="btn btn-primary m-5"><i class="bi bi-eye"></i> Show</button>
-                    </form>
-
-                    <form class="col-3" action="{{-- {{ route('company.edit', $company) }} --}}" method="GET">
-                        <button class="btn btn-success m-5 "><i class="bi bi-people-fill"></i> Users</button>
-                    </form>
+                    <div class="col-3"> </div>
 
                     <form class="col-3" action="{{ route('companyPage.edit', $company) }}" method="GET">
 
@@ -108,15 +101,34 @@
                                         <tr>
                                             <td>{{ $user->username }}</td>
                                             <td></td>
-                                            <td>
-                                                <form action="{{ route('companyPage.promote', $user) }}" method="POST">
+
+                                              <td>
+                                            @foreach ( $userCompanies as $userCompany )
+                                                @if ($userCompany['user_id'] == $user->id)
+                                                    @if ($userCompany['company_admin'] == 0 )
+                                                        <form action="{{ route('companyPage.promote', [$user, $company]) }}" method="POST">
                                                     @csrf
-                                                    <button class="btn btn-primary"><i class="bi bi-pencil-square"></i>
-                                                        Promote</button>
-                                                </form>
+
+                                                         <button type="submit" class="btn btn-info"><i class="bi bi-pencil-square"></i>
+                                                            Promote</button>
+                                                        </form>
+                                                    @endif
+
+                                                 @if ($userCompany['company_admin'] == 1 )
+                                                        <form action="{{ route('companyPage.demote', [$user, $company]) }}" method="POST">
+                                                    @csrf
+
+                                                         <button type="submit" class="btn btn-primary"><i class="bi bi-pencil-square"></i>
+                                                            Demote</button>
+                                                        </form>
+                                                    @endif
+                                                @endif
+                                            @endforeach
+
                                             </td>
                                             <td>
-                                                <form action="{{ route('company.edit', $company) }}" method="GET">
+                                                <form action="{{ route('companyPage.kick', [$user, $company]) }}" method="POST">
+                                                    @csrf
                                                     <button class="btn btn-danger"><i class="bi bi-pencil-square"></i> Kick</button>
                                                 </form>
                                             </td>

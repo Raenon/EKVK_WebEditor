@@ -14,8 +14,12 @@ class CompanyPageController extends Controller
 {
     public function index(Companies $company)
     {
+        $userCompanies = UserCompany::where('company_id', $company->id)->get()->toArray();
+
+
         return view("companyPage.index", [
-            "company" => $company
+            "company" => $company,
+            "userCompanies" => $userCompanies
         ]);
     }
 
@@ -67,17 +71,31 @@ class CompanyPageController extends Controller
     public function destroy(Companies $company)
     {
         $company->delete();
-        return back()->with("success", $company->username . " törlése megtörtént");
+        return redirect()->route('welcome')->with("success", $company->company_name . " törlése megtörtént");
     }
 
     public function promote(Users $user, Companies $company)
     {
-        /* $userCompany = UserCompany::where( 'user_id',$user->id)->where('company_id', $company->company_id);
-        dd($userCompany);
-        $userCompany::update([
-            'company_admin' => 1
-        ]);*/
+        UserCompany::where([['user_id', '=', $user->id], ['company_id', '=', $company->id] ])->update(['company_admin' => 1]);
+       return redirect()->back()->with('alert', $user->name . 'Member promoted!');
+    }
 
-        return redirect()->back()/* ->with('alert', 'Member promoted!') */;
+    public function demote(Users $user, Companies $company)
+    {
+        if (Auth::user()->id == $user->id) {
+          return redirect()->back()->with('alert', "Cant demote yourself");
+        }
+        UserCompany::where([['user_id', '=', $user->id], ['company_id', '=', $company->id] ])->update(['company_admin' => 0]);
+       return redirect()->back()->with('alert',  'Member Demoted!');
+    }
+
+    public function kick(Users $user, Companies $company)
+    {
+        if (Auth::user()->id == $user->id) {
+          return redirect()->back()->with('alert', "Cant kick yourself");
+        }
+
+        UserCompany::where([['user_id', '=', $user->id], ['company_id', '=', $company->id] ])->delete();
+       return redirect()->back()->with('alert', $user->name . 'Member kicked!');
     }
 }

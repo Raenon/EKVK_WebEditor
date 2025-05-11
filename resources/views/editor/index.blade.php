@@ -16,6 +16,9 @@
     <div class="container">
         <button onclick="Save()">Mentés</button>
     </div>
+
+
+
 @endsection
 
 <script src="https://cdn.ckeditor.com/ckeditor5/45.0.0/ckeditor5.umd.js" crossorigin></script>
@@ -28,5 +31,5 @@
         console.log("Fasza");
         console.log('====================================');
     }
-    
+
 </script>

@@ -64,13 +64,10 @@
                             <a class="nav-link active" aria-current="page" href="{{route('about')}}"><i
                                     class="bi bi-people-fill"></i> Rólunk</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="{{route('download')}}"><i
-                                    class="bi bi-arrow-down-circle"></i> Letöltés</a>
-                        </li>
+
                         @if(Auth::check())
                             @if (Auth::user()->hasRole(1))
-                                <hr>
+<hr>
                                 <li class="nav-item">
                                     <a class="nav-link active" aria-current="page" href="{{route('admin')}}">
                                         <i class="bi bi-grid-1x2"></i> Admin Dashboard </a>
@@ -81,8 +78,12 @@
                     <hr>
                     <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
                         @if(Auth::check())
+                          <li><a class="nav-link active" href="{{route('projectPage.index')}}"><i class="bi bi-file-earmark-text"></i>
+                                    Your Projects</a></li>
+                                    <hr>
                             <li><a class="nav-link active" href="{{route('account')}}"><i class="bi bi-person-fill"></i>
                                     {{Auth::user()->username}}</a></li>
+
                             <li><a class="nav-link active" href="{{route('logout')}}"><i class="bi bi-door-closed"></i>
                                     Kijelentkezés</a></li>
 

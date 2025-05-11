@@ -2,11 +2,13 @@
 
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\EditorController;
 use App\Http\Controllers\UsersController;
 use App\Http\Controllers\CompaniesController;
 use App\Http\Controllers\ProjectsController;
 use App\Http\Controllers\AccountController;
 use App\Http\Controllers\CompanyPageController;
+use App\Http\Controllers\ProjectPageController;
 use App\Http\Middleware\Admin;
 use Illuminate\Support\Facades\Route;
 
@@ -40,13 +42,7 @@ Route::get('/editor', function () {
     return view('editor.index');
 })->name('editor');
 
-Route::get('/project', function () {
-    return view('project.index');
-})->name('project');
 
-Route::get('/project/create', function () {
-    return view('project.create');
-})->name('create');
 
 /* Account */
 
@@ -95,4 +91,22 @@ Route::get('/companypage/{company}/edit' , [CompanyPageController::class, "edit"
 
 Route::post('/companypage/{company}/update' , [CompanyPageController::class, "update"])->name('companyPage.update');
 
-Route::post('/companypage/promote' , [CompanyPageController::class, "promote"])->name('companyPage.promote');
+Route::post('/companypage/promote/{user}/{company}' , [CompanyPageController::class, "promote"])->name('companyPage.promote');
+
+Route::post('/companypage/demote/{user}/{company}' , [CompanyPageController::class, "demote"])->name('companyPage.demote');
+
+Route::post('/companypage/kick/{user}/{company}' , [CompanyPageController::class, "kick"])->name('companyPage.kick');
+
+
+/* Project */
+
+
+Route::get('/projectpage' , [ProjectPageController::class, "index"])->name('projectPage.index');
+
+Route::get('/projectpage/create' , [ProjectPageController::class, "create"])->name('projectPage.create');
+
+Route::post('/projectpage/store', [ProjectPageController::class, "store"])->name('projectPage.store');
+
+/* Editor */
+
+Route::post('/editor/{project}' , [EditorController::class, "index"])->name('editor.index');
