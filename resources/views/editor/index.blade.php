@@ -10,9 +10,11 @@
 			</div>
 		</div>
     <div class="container">
-        <form action="" method="post">
+        {{-- <form action="" method="post"> --}}
             <button onclick="Save()">Mentés</button>
-        </form>
+            <input id="getJson" value="" type="hidden" class="form-control mb-3"
+            placeholder="username" name="companyID">
+        {{-- </form> --}}
     </div>
 
 
@@ -26,9 +28,10 @@
         const titleText = titleTag[0].innerHTML;
         let pTag = document.getElementsByTagName("p");
         const pText = pTag[0].innerHTML;
-        const obj = JSON.parse('{"title":"", "p": ""}');
+        const obj = JSON.parse('{"title": "", "p": ""}');
         obj.title = titleText;
         obj.p = pText;
-        console.log(obj);
+        document.getElementById("getJson").value = JSON.stringify(obj);
+        console.log(document.getElementById("getJson").value);
     }
 </script>
