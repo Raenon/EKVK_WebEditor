@@ -110,3 +110,5 @@ Route::post('/projectpage/store', [ProjectPageController::class, "store"])->name
 /* Editor */
 
 Route::post('/editor/{project}' , [EditorController::class, "index"])->name('editor.index');
+
+Route::post('/editor/save/{project}' , [EditorController::class, "update"])->name('editor.update');

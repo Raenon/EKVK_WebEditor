@@ -10,11 +10,11 @@
 			</div>
 		</div>
     <div class="container">
-        {{-- <form action="" method="post"> --}}
-            <button onclick="Save()">Mentés</button>
-            <input id="getJson" value="" type="hidden" class="form-control mb-3"
-            placeholder="username" name="companyID">
-        {{-- </form> --}}
+        <form action="{{ route('editor.update',$project) }}" method="POST">
+            @csrf
+            <button class="btn-click p-2" onclick="Save()">Mentés</button>
+            <input id="getJson" value="" type="hidden" name="data">
+        </form>
     </div>
 
 

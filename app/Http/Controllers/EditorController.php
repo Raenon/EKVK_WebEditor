@@ -16,7 +16,10 @@ class EditorController extends Controller
         ]);
     }
 
-
-
+     public function update(UpdateProjectsRequest $request, Projects $project)
+    {
+      $project->update(['project_data' => $request->data]);
+        return redirect()->route('projectPage.index');
+    }
 
 }
