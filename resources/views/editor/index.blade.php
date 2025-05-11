@@ -10,7 +10,9 @@
 			</div>
 		</div>
     <div class="container">
-        <button onclick="Save()">Mentés</button>
+        <form action="" method="post">
+            <button onclick="Save()">Mentés</button>
+        </form>
     </div>
 @endsection
 	<script src="https://cdn.ckeditor.com/ckeditor5/45.0.0/ckeditor5.umd.js" crossorigin></script>
