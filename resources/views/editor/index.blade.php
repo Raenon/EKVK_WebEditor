@@ -13,7 +13,7 @@
         <form action="{{ route('editor.update',$project) }}" method="POST">
             @csrf
             <button class="btn-click p-2" onclick="Save()">Mentés</button>
-            <input id="getJson" value="" type="hidden" name="data">
+            <input id="getJson" value="{{  $project->project_data }}" type="hidden" name="data">
         </form>
     </div>
 
@@ -33,5 +33,13 @@
         obj.p = pText;
         document.getElementById("getJson").value = JSON.stringify(obj);
         console.log(document.getElementById("getJson").value);
+    }
+    window.onload = function Load(){
+        let v = document.getElementById("getJson").value;
+        console.log(v);
+        let titleTag = document.getElementsByClassName("ck-placeholder");
+        console.log(titleTag.length);
+        titleTag[0].innerHTML = v.title;
+        titleTag[1].innerHTML = v.p;
     }
 </script>
