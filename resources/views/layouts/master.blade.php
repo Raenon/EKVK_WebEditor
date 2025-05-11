@@ -79,7 +79,7 @@
                     <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
                         @if(Auth::check())
                           <li><a class="nav-link active" href="{{route('projectPage.index')}}"><i class="bi bi-file-earmark-text"></i>
-                                    Your Projects</a></li>
+                                    Projektek</a></li>
                                     <hr>
                             <li><a class="nav-link active" href="{{route('account')}}"><i class="bi bi-person-fill"></i>
                                     {{Auth::user()->username}}</a></li>
